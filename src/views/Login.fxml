@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="loginWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #eeee;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+   <children>
+      <ImageView fitHeight="852.0" fitWidth="1287.0" layoutX="-390.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.8;">
+         <image>
+            <Image url="@../resource/refe.jpeg" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="-0.59" hue="0.02" saturation="-0.05" />
+         </effect>
+      </ImageView>
+      <VBox alignment="TOP_CENTER" layoutX="167.0" layoutY="93.0" prefHeight="585.0" prefWidth="483.0" style="-fx-background-color: #fff; -fx-padding: 30px 30px 40px 30px;">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" spread="0.81">
+               <color>
+                  <Color opacity="0.10000000149011612" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <ImageView fitHeight="145.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resource/logo.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="92.0" prefWidth="394.0" text="Inicio de sesión">
+               <font>
+                  <Font name="Arial Hebrew Bold" size="25.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" prefHeight="192.0" prefWidth="423.0" style="-fx-padding: 20px;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontAwesomeIconView fill="#e85a9d" glyphName="USER" size="16" textAlignment="CENTER" wrappingWidth="10.627388954162598">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <TextField id="signInEmailIn" fx:id="signInEmailIn" prefHeight="43.0" prefWidth="336.0" promptText="Usuario" style="-fx-cursor: hand;" stylesheets="@css/Login.css">
+                           <font>
+                              <Font name="Arial Hebrew" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontAwesomeIconView fill="#e85a9d" glyphName="LOCK" size="16" textAlignment="CENTER" wrappingWidth="10.627388954162598">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <PasswordField id="signInPassIn" fx:id="signInPassIn" prefHeight="42.0" prefWidth="336.0" promptText="Contraseña" style="-fx-cursor: hand;" stylesheets="@css/Login.css">
+                           <font>
+                              <Font name="Arial Hebrew" size="16.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Button id="signInBtn" fx:id="signInBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="372.0" style="-fx-padding: 10px; -fx-background-color: #e85a9d; -fx-cursor: hand;" stylesheets="@css/Login.css" text="Iniciar sesión" textFill="WHITE">
+               <font>
+                  <Font name="Arial Hebrew Bold" size="16.0" />
+               </font>
+            </Button>
+            <Label id="error-label" fx:id="errorLabel" style="-fx-opacity: 0;" stylesheets="@css/Login.css" text="Usuario o contraseña incorrecta" textFill="#f23232">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefHeight="86.0" prefWidth="137.0" style="-fx-padding: 20px 0 0 0;" stylesheets="@css/Login.css" text="¿No tienes cuenta?">
+               <font>
+                  <Font name="Arial Hebrew" size="16.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="registerRedirect" text="Registrarse" textFill="#0099ff" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </children>
+</Pane>

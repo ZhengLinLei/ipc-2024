@@ -1,7 +1,9 @@
 .DS_Store
 tmp/
-test/
+
 build/
 dist/
 
 zll/
+
+*.db

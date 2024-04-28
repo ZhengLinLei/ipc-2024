@@ -1,0 +1,23 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 27, 2024, 2:16:51 PM
+    Author     : zheng
+*/
+
+#signUpBtn {
+    -fx-padding: 10px;
+}
+#signUpBtn.hover {
+    -fx-background-color: #e74b94 !important;
+}
+
+.input.error {
+    -fx-border-color: red;
+}
+
+#error-label.error {
+    -fx-opacity: 1 !important;
+}

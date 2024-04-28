@@ -24,24 +24,161 @@
  */
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafxmlapplication.JavaFXMLApplication;
+
+import model.Acount;
+import model.AcountDAOException;
+
 /**
  * FXML Controller class
  *
- * @author Zheng Lin Lei
+ * @author zheng
  */
 public class LoginController implements Initializable {
+
+    @FXML
+    private TextField signInEmailIn;
+    @FXML
+    private PasswordField signInPassIn;
+    @FXML
+    private Button signInBtn;
+    @FXML
+    private Hyperlink registerRedirect;
+    @FXML
+    private Label errorLabel;
+    @FXML
+    private Pane loginWindow;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // Link
+        registerRedirect.setOnMouseClicked((MouseEvent event) -> {
+            try {
+                clickRegistrarse(event);
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        // Botón
+        signInBtn.setOnMouseClicked((MouseEvent event) -> {
+            try {
+                signInBtnEvent(event);
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        // Hover
+        signInBtn.setOnMouseEntered((MouseEvent event) -> {
+            hoverLoginBtn(event);
+        });
+        signInBtn.setOnMouseExited((MouseEvent event) -> {
+            exitLoginBtn(event);
+        });
+
+        // Enter
+        loginWindow.setOnKeyPressed((KeyEvent event) -> {
+            try {
+                windowKeyEnter(event);
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }    
+
+    private void signInBtnEvent(MouseEvent event) throws IOException {
+        String u = signInEmailIn.getText();
+        String p = signInPassIn.getText();
+        
+        // Quitar clase error
+        signInEmailIn.getStyleClass().remove("error");
+        signInPassIn.getStyleClass().remove("error");
+        errorLabel.getStyleClass().remove("error");
+
+        // Debug values
+        Logger.getLogger(LoginController.class.getName()).log(Level.INFO, "Email: " + u);
+        Logger.getLogger(LoginController.class.getName()).log(Level.INFO, "Pass: " + p);
+
+        Acount acc = null;
+        boolean valido = false;
+
+        if(u != null && p != null && !u.equals("") && !p.equals("")) {
+            // Hay valor
+            try {
+                acc = Acount.getInstance();
+                
+                valido = acc.logInUserByCredentials(u, p);
+                
+            } catch (AcountDAOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            if (u == null || u.equals("")) {
+                signInEmailIn.getStyleClass().add("error");
+            }
+            if (p == null || p.equals("")) {
+                signInPassIn.getStyleClass().add("error");
+            }
+            
+            return;
+        }
+        
+        if (valido) {
+            clear();
+            // Entrar a dashboard
+            LobbyController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL).getController();
+            //c.setUser(acc.getLoggedUser());
+        } else {
+            errorLabel.getStyleClass().add("error");
+        }
+    }
+    
+    private void hoverLoginBtn(MouseEvent event) {
+        signInBtn.getStyleClass().add("hover");
+    }
+    private void exitLoginBtn(MouseEvent event) {
+        signInBtn.getStyleClass().remove("hover");
+    }
+    
+    private void windowKeyEnter(KeyEvent event) throws IOException {
+        if(event.getCode() == KeyCode.ENTER){
+            signInBtnEvent(null);
+        }
+    }
+    private void clear() {
+        signInEmailIn.getStyleClass().remove("error");
+        signInPassIn.getStyleClass().remove("error");
+        errorLabel.getStyleClass().remove("error");
+        // Remove all input values
+        signInEmailIn.setText("");
+        signInPassIn.setText("");
+    }
+    private void clickRegistrarse(MouseEvent event) throws IOException {
+        clear();
+        JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.REGISTRO);
+    }
+    
     
 }
