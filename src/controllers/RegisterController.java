@@ -191,7 +191,7 @@ public class RegisterController implements Initializable {
             // Save and change window to Register2
             clear();
             Register2Controller c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.REGISTROAVATAR).getController();
-            c.registerUser(e, u, e, n, p, date);
+            c.registerUser(n, s, e, u, p, date);
 
             //acc.registerUser(e, u, e, n, p, new Image("avatars/default.png"), date);
             

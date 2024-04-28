@@ -26,16 +26,18 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
+import model.User;
 /**
  * FXML Controller class
  *
  * @author Alejandro
  */
 public class LobbyController implements Initializable {
+    
+    
+    
+    User user;
     /**
      * Initializes the controller class.
      */
@@ -44,4 +46,8 @@ public class LobbyController implements Initializable {
         // TODO
     }    
     
+    
+    public void setUser(User u) {
+        user = u;
+    }
 }

@@ -24,10 +24,7 @@ import javafx.scene.image.Image;
 import model.Acount;
 import model.AcountDAOException;
 
-
-
 import javafxmlapplication.JavaFXMLApplication;
-import model.Acount;
 
 public class Register2Controller implements Initializable {
 
@@ -134,7 +131,7 @@ public class Register2Controller implements Initializable {
     }
 
     // Register data
-    public void registerUser(String  e, String u, String p, String n, String s, LocalDate date) {
+    public void registerUser(String  n, String s, String e, String u, String p, LocalDate date) {
         email = e;
         user = u;
         pass = p;
@@ -166,10 +163,11 @@ public class Register2Controller implements Initializable {
 
     private void clickRegistrarse(MouseEvent event) throws IOException {
         try {
-            Acount acc = Account.getInstance();
+            Acount acc = Acount.getInstance();
 
-            acc.registerUser(email, user, pass, name, surname, img, date);
-            JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.INICIOSESION);
+            acc.registerUser(name, surname, email, user, pass, img, date);
+            LobbyController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL).getController();
+            c.setUser(acc.getLoggedUser());
         } catch (AcountDAOException ex) {
             Logger.getLogger(Register2Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
