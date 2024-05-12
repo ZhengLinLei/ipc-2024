@@ -24,10 +24,18 @@
  */
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import model.User;
+import model.Acount;
+import model.AcountDAOException;
+import model.AcountDAO;
+
 /**
  * FXML Controller class
  *
@@ -37,17 +45,28 @@ public class LobbyController implements Initializable {
     
     
     
-    User user;
+    private User user;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Acount acc = null;
+        try {
+            acc = Acount.getInstance();
+            this.user = acc.getLoggedUser();
+            System.out.println(this.user.getName());
+        }
+        catch (IOException ex) {
+            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (AcountDAOException ex) {
+            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
     
     
-    public void setUser(User u) {
-        user = u;
+    public void setUser(User u) throws IOException{
+        this.user = u;
     }
 }

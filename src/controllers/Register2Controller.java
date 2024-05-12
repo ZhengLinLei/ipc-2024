@@ -26,6 +26,11 @@ import model.AcountDAOException;
 
 import javafxmlapplication.JavaFXMLApplication;
 
+/**
+ * FXML Controller class
+ * 
+ * @author: Zheng Lin Lei
+ */
 public class Register2Controller implements Initializable {
 
     @FXML

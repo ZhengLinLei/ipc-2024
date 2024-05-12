@@ -48,7 +48,7 @@ import model.AcountDAOException;
 /**
  * FXML Controller class
  *
- * @author zheng
+ * @author Zheng Lin Lei
  */
 public class LoginController implements Initializable {
 
@@ -148,8 +148,13 @@ public class LoginController implements Initializable {
         if (valido) {
             clear();
             // Entrar a dashboard
-            LobbyController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL).getController();
-            //c.setUser(acc.getLoggedUser());
+            // LobbyController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPALPERFIL).getController();
+            ProfileController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPALPERFIL).getController();
+            try {
+                c.setUser(acc.getLoggedUser());
+            } catch (NullPointerException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             errorLabel.getStyleClass().add("error");
         }
