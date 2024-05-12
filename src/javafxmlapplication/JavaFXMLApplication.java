@@ -29,6 +29,11 @@ public class JavaFXMLApplication extends Application {
     public static final String PRINCIPAL = "Dashboard";
     public static final String REGISTRO = "Registrarse";
     public static final String REGISTROAVATAR = "Registrarse Avatar";
+    
+    
+    // Subventanas
+    public static final String PRINCIPALPERFIL = "Perfil Usuario";
+
 
     //Fin Nombre Ventanas
         @Override
@@ -41,7 +46,7 @@ public class JavaFXMLApplication extends Application {
         stage.getIcons().add(new Image("resource/logo.png"));
         
         redimensionar(800, 800);
-        stage.setMaximized(true);
+        // stage.setMaximized(true);
         
         inicializarMaps();
         cambiarVentana(INICIOSESION);
@@ -57,6 +62,7 @@ public class JavaFXMLApplication extends Application {
         mapLoaders.put(REGISTRO, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "Register.fxml")));
         mapLoaders.put(REGISTROAVATAR, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "Register2.fxml")));
 
+        mapLoaders.put(PRINCIPALPERFIL, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "Profile.fxml")));
         mapRoots = new HashMap<>();
     }
     

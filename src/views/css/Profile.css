@@ -1,0 +1,20 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : May 12, 2024, 5:08:49 PM
+    Author     : zheng
+*/
+
+.cancelBtn {
+    -fx-opacity: 0;
+}
+
+.cancelBtn.active {
+    -fx-opacity: 1;
+}
+
+.confirmBtn.hover {
+    -fx-background-color: #e74b94 !important;
+}

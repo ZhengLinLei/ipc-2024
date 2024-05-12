@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileController">
+   <children>
+      <VBox prefHeight="800.0" prefWidth="800.0">
+         <children>
+            <Pane prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #e85a9d;">
+               <children>
+                  <Button fx:id="backLobby" mnemonicParsing="false" prefHeight="68.0" prefWidth="112.0" style="-fx-background-color: transparent; -fx-cursor: hand;" textAlignment="CENTER">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="ARROW_LEFT" size="21" tabSize="4">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </FontAwesomeIconView>
+                     </graphic>
+                  </Button>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="204.0" layoutY="-8.0" prefHeight="92.0" prefWidth="394.0" text="Perfil de usuario" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Hebrew Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="735.0" prefWidth="800.0">
+               <children>
+                  <Pane layoutX="27.0" layoutY="77.0" prefHeight="632.0" prefWidth="746.0" style="-fx-border-color: #555555; -fx-border-width: 0.3px;">
+                     <children>
+                        <ImageView fx:id="avatarCode" fitHeight="150.0" fitWidth="200.0" layoutX="303.0" layoutY="-56.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/avatar/1.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER" layoutX="156.0" layoutY="127.0" prefHeight="412.0" prefWidth="441.0" style="-fx-padding: 20px;">
+                           <children>
+                              <Label fx:id="userTitle" alignment="CENTER" text="Usuario" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Arial Hebrew Bold" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox alignment="CENTER" layoutX="30.0" layoutY="30.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIconView fill="#e85a9d" glyphName="ID_CARD" size="16" textAlignment="CENTER" wrappingWidth="10.627388954162598">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </FontAwesomeIconView>
+                                    <TextField id="signInNameIn" fx:id="signUpNameIn" prefHeight="43.0" prefWidth="158.0" promptText="Nombre" style="-fx-cursor: hand;" styleClass="input" stylesheets="@css/Register.css">
+                                       <font>
+                                          <Font name="Arial Hebrew" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField id="signInSurnameIn" fx:id="signUpSurnameIn" layoutX="155.0" layoutY="17.0" prefHeight="43.0" prefWidth="158.0" promptText="Apellidos" style="-fx-cursor: hand;" styleClass="input" stylesheets="@css/Register.css">
+                                       <font>
+                                          <Font name="Arial Hebrew" size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="20.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="30.0" layoutY="30.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIconView fill="#e85a9d" glyphName="ENVELOPE" size="16" textAlignment="CENTER" wrappingWidth="10.627388954162598">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </FontAwesomeIconView>
+                                    <TextField id="signInEmailIn" fx:id="signUpEmailIn" prefHeight="43.0" prefWidth="336.0" promptText="Email" style="-fx-cursor: hand;" styleClass="input" stylesheets="@css/Register.css">
+                                       <font>
+                                          <Font name="Arial Hebrew" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIconView fill="#e85a9d" glyphName="LOCK" size="16" text="" textAlignment="CENTER" wrappingWidth="10.627388954162598">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </FontAwesomeIconView>
+                                    <PasswordField id="signInPassIn" fx:id="signUpPassIn" prefHeight="42.0" prefWidth="336.0" promptText="Contraseña" style="-fx-cursor: hand;" styleClass="input" stylesheets="@css/Register.css">
+                                       <font>
+                                          <Font name="Arial Hebrew" size="16.0" />
+                                       </font>
+                                    </PasswordField>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="43.0" prefWidth="181.0" styleClass="cancelBtn" stylesheets="@css/Profile.css" text="Cancelar">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Arial Hebrew" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="modifyBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="190.0" style="-fx-background-color: #e85a9d; -fx-cursor: hand;" styleClass="confirmBtn" stylesheets="@css/Profile.css" text="Modificar" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Arial Hebrew" size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children></VBox>
+   </children>
+</Pane>
