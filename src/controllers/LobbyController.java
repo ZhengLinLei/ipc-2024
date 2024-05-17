@@ -69,4 +69,8 @@ public class LobbyController implements Initializable {
     public void setUser(User u) throws IOException{
         this.user = u;
     }
+    
+    public void update() {
+        
+    }
 }

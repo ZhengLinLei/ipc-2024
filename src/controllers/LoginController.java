@@ -42,6 +42,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafxmlapplication.JavaFXMLApplication;
 
+// Localdate
+import java.time.LocalDate;
+
 import model.Acount;
 import model.AcountDAOException;
 
@@ -148,10 +151,10 @@ public class LoginController implements Initializable {
         if (valido) {
             clear();
             // Entrar a dashboard
-            // LobbyController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPALPERFIL).getController();
-            ProfileController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPALPERFIL).getController();
+            LobbyController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL).getController();
+            // ProfileController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL).getController();
             try {
-                c.setUser(acc.getLoggedUser());
+                // c.setUser(acc.getLoggedUser());
             } catch (NullPointerException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -159,7 +162,9 @@ public class LoginController implements Initializable {
             errorLabel.getStyleClass().add("error");
         }
     }
-    
+    void setNewUser(String username) {
+        signInEmailIn.setText(username);
+    }
     private void hoverLoginBtn(MouseEvent event) {
         signInBtn.getStyleClass().add("hover");
     }
