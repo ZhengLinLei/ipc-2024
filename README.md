@@ -1,0 +1,1 @@
+**Mira el comentario de** `nbproject/project.properties` **si no te va javafx.**
