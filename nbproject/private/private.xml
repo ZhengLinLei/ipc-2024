@@ -10,9 +10,14 @@
             <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/views/css/Register.css</file>
             <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/views/component/ChargeInfo.fxml</file>
             <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/controllers/LoginController.java</file>
+            <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/controllers/CategoryListController.java</file>
+            <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/views/component/CategoryList.fxml</file>
+            <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/views/css/component/CategoryList.css</file>
             <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/controllers/ChargeInfoController.java</file>
             <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/model/MyChargeModel.java</file>
             <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/views/css/Login.css</file>
+            <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/views/component/CategoryInfo.fxml</file>
+            <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/controllers/CategoryInfoController.java</file>
             <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/controllers/LobbyController.java</file>
             <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/controllers/RegisterController.java</file>
             <file>file:/Users/zheng/Documents/Zheng/UPV/IPC/Trabajo/src/controllers/ProfileController.java</file>
