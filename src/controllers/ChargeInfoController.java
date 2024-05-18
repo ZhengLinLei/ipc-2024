@@ -138,7 +138,7 @@ public class ChargeInfoController implements Initializable {
                 try {
                     Acount acc2 = Acount.getInstance();
                     acc2.removeCharge(charge);
-                    JavaFXMLApplication.showAlert("Cargo eliminado", "Cargo eliminado correctamente", "El cargo ha sido eliminado correctamente");
+                    // JavaFXMLApplication.showAlert("Cargo eliminado", "Cargo eliminado correctamente", "El cargo ha sido eliminado correctamente");
                     // Click on back
                     backLobby.fire();
                 } catch (AcountDAOException ex) {
