@@ -1,0 +1,21 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : May 18, 2024, 7:54:36 PM
+    Author     : zheng
+*/
+.deleteBtn.active, .modifyBtn.active, .viewBtn.active {
+    -fx-cursor: hand;
+}
+.deleteBtn.active {
+    -fx-background-color:  #ff5555;
+}
+.modifyBtn.active {
+    -fx-background-color: #FFA500;
+} 
+
+.viewBtn.active {
+   -fx-bakground-color: #5555ff;
+}

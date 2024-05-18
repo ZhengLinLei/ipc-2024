@@ -123,13 +123,16 @@
                                           <Font name="Arial Hebrew" size="18.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="modifyBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="190.0" style="-fx-background-color: #e85a9d; -fx-cursor: hand;" styleClass="confirmBtn" stylesheets="@../css/Profile.css" text="Modificar" textFill="WHITE">
+                                    <Button fx:id="modifyBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="190.0" style="-fx-background-color: #e85a9d; -fx-cursor: hand;" styleClass="confirmBtn" stylesheets="@../css/Profile.css" text="  Modificar" textFill="WHITE">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                        <font>
                                           <Font name="Arial Hebrew" size="18.0" />
                                        </font>
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" />
+                                       </graphic>
                                     </Button>
                                  </children>
                               </HBox>

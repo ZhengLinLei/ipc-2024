@@ -166,7 +166,7 @@ public class ChargeInfoController implements Initializable {
     public void setReturn(String ret) {
         backLobby.setOnAction(e -> {
             try {
-                if (ret == JavaFXMLApplication.GASTOSLISTA) {
+                if (ret.equals(JavaFXMLApplication.GASTOSLISTA)) {
                     ChargeListController c = null;
                     c = JavaFXMLApplication.cambiarVentana(ret).getController();
                     c.update();

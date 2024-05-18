@@ -40,6 +40,8 @@ public class JavaFXMLApplication extends Application {
     // Submodulos
     public static final String GASTOSLISTA = "Historial de gastos";
     public static final String GASTOSINFO = "Información de gasto";
+    public static final String CATEGORIALISTA = "Categorías";
+    public static final String CATEGORIAINFO = "Información de categoría";
 
 
     //Fin Nombre Ventanas
@@ -88,6 +90,8 @@ public class JavaFXMLApplication extends Application {
         
         mapLoaders.put(GASTOSLISTA, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "ChargeList.fxml")));
         mapLoaders.put(GASTOSINFO, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "ChargeInfo.fxml")));
+        mapLoaders.put(CATEGORIALISTA, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "CategoryList.fxml")));
+        mapLoaders.put(CATEGORIAINFO, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "CategoryInfo.fxml")));
 
         mapRoots = new HashMap<>();
     }

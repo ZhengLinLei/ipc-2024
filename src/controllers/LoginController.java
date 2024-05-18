@@ -151,8 +151,8 @@ public class LoginController implements Initializable {
         if (valido) {
             clear();
             // Entrar a dashboard
-            LobbyController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL, true).getController();
-            // ProfileController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL).getController();
+            //LobbyController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL, true).getController();
+            CategoryListController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.CATEGORIALISTA).getController();
             try {
                 // c.setUser(acc.getLoggedUser());
             } catch (NullPointerException ex) {
