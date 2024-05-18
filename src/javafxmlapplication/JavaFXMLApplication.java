@@ -117,6 +117,25 @@ public class JavaFXMLApplication extends Application {
      * @param nombre Nombre de la ventana (Usar variables de la clase)
      */
     public static FXMLLoader cambiarVentana(String nombre) throws IOException{
+        stage.setResizable(false);
+
+        //Obtener loader
+        Parent root;
+        if(mapRoots.containsKey(nombre)) root = mapRoots.get(nombre);
+        else {
+            root = mapLoaders.get(nombre).load();
+            mapRoots.put(nombre, root);
+        }
+        if(root!=null) {
+            iniciar(root, nombre);
+            return mapLoaders.get(nombre);
+        }
+        return null;
+    }
+    
+    public static FXMLLoader cambiarVentana(String nombre, Boolean x) throws IOException{
+        stage.setResizable(x);
+
         //Obtener loader
         Parent root;
         if(mapRoots.containsKey(nombre)) root = mapRoots.get(nombre);
