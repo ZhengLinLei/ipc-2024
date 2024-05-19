@@ -1,4 +1,4 @@
-/**
+        /**
         MIT License
 
         Copyright (c) 2024 ZhengLinLei, Elena Clofent Muñoz and Alejandro Zafra Muñoz
@@ -24,6 +24,7 @@
  */
 package controllers;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +32,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.input.MouseEvent;
 import model.User;
 import model.Acount;
 import model.AcountDAOException;
@@ -46,6 +50,12 @@ public class LobbyController implements Initializable {
     
     
     private User user;
+    @FXML
+    private FontAwesomeIconView perfil;
+    @FXML
+    private FontAwesomeIconView menu;
+    @FXML
+    private Button añadirGastos;
     /**
      * Initializes the controller class.
      */
@@ -68,5 +78,9 @@ public class LobbyController implements Initializable {
     
     public void setUser(User u) throws IOException{
         this.user = u;
+    }
+
+    @FXML
+    private void entrarPerfil(MouseEvent event) {
     }
 }
