@@ -23,6 +23,10 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.scene.image.Image;
 import model.Acount;
 import model.AcountDAOException;
+import model.Category;
+
+// List
+import java.util.List;
 
 import javafxmlapplication.JavaFXMLApplication;
 
@@ -171,8 +175,11 @@ public class Register2Controller implements Initializable {
             Acount acc = Acount.getInstance();
 
             acc.registerUser(name, surname, email, user, pass, img, date);
-            LobbyController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL).getController();
-            c.setUser(acc.getLoggedUser());
+            // Show alert
+            JavaFXMLApplication.showAlert("Usuario registrado", "Usuario registrado correctamente", "Ahora puedes iniciar sesión");
+            //
+            LoginController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.INICIOSESION).getController();
+            c.setNewUser(user);
         } catch (AcountDAOException ex) {
             Logger.getLogger(Register2Controller.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -16,6 +16,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import model.Acount;
+import model.AcountDAOException;
+
 
 public class JavaFXMLApplication extends Application {
     private static Stage stage;
@@ -33,15 +36,36 @@ public class JavaFXMLApplication extends Application {
     
     // Subventanas
     public static final String PRINCIPALPERFIL = "Perfil Usuario";
+    
+    // Submodulos
+    public static final String GASTOSLISTA = "Historial de gastos";
+    public static final String GASTOSINFO = "Información de gasto";
+    public static final String CATEGORIALISTA = "Categorías";
+    public static final String CATEGORIAINFO = "Información de categoría";
 
 
     //Fin Nombre Ventanas
-        @Override
+    @Override
     public void start(Stage s) throws Exception {   
         stage = s;
         stage.setMinWidth(800);
         stage.setMinHeight(800);
         stage.setResizable(false);
+
+        // Onclose
+        stage.setOnCloseRequest(e -> {
+            Acount acc = null;
+            try {
+                acc = Acount.getInstance();
+                acc.logOutUser();
+            } catch (AcountDAOException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            System.out.println("Adiós");
+            System.exit(0);
+        });
 
         stage.getIcons().add(new Image("resource/logo.png"));
         
@@ -62,7 +86,13 @@ public class JavaFXMLApplication extends Application {
         mapLoaders.put(REGISTRO, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "Register.fxml")));
         mapLoaders.put(REGISTROAVATAR, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "Register2.fxml")));
 
-        mapLoaders.put(PRINCIPALPERFIL, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "Profile.fxml")));
+        mapLoaders.put(PRINCIPALPERFIL, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "Profile.fxml")));
+        
+        mapLoaders.put(GASTOSLISTA, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "ChargeList.fxml")));
+        mapLoaders.put(GASTOSINFO, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "ChargeInfo.fxml")));
+        mapLoaders.put(CATEGORIALISTA, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "CategoryList.fxml")));
+        mapLoaders.put(CATEGORIAINFO, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "CategoryInfo.fxml")));
+
         mapRoots = new HashMap<>();
     }
     
@@ -91,6 +121,25 @@ public class JavaFXMLApplication extends Application {
      * @param nombre Nombre de la ventana (Usar variables de la clase)
      */
     public static FXMLLoader cambiarVentana(String nombre) throws IOException{
+        stage.setResizable(false);
+
+        //Obtener loader
+        Parent root;
+        if(mapRoots.containsKey(nombre)) root = mapRoots.get(nombre);
+        else {
+            root = mapLoaders.get(nombre).load();
+            mapRoots.put(nombre, root);
+        }
+        if(root!=null) {
+            iniciar(root, nombre);
+            return mapLoaders.get(nombre);
+        }
+        return null;
+    }
+    
+    public static FXMLLoader cambiarVentana(String nombre, Boolean x) throws IOException{
+        stage.setResizable(x);
+
         //Obtener loader
         Parent root;
         if(mapRoots.containsKey(nombre)) root = mapRoots.get(nombre);
@@ -167,6 +216,47 @@ public class JavaFXMLApplication extends Application {
 
     public static void Log(String x) {
         System.out.println(x);
+    }
+
+    public static void showAlert(String title, String header, String content) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    public static void showAlert(String title, String header, String content, javafx.scene.control.Alert.AlertType type) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    public static void showAlert(String title, String header, String content, javafx.scene.control.Alert.AlertType type, javafx.scene.control.ButtonType... buttons) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.getButtonTypes().setAll(buttons);
+        alert.showAndWait();
+    }
+
+    // Confirmarion with callback
+    // JavaFXMLApplication.showConfirm("Eliminar cargo", "¿Estás seguro de que quieres eliminar este cargo?", "Esta acción no se puede deshacer", "Eliminar", "Cancelar", () -> {
+    
+    public static void showConfirm(String title, String header, String content, String ok, String cancel, Runnable callback) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.getButtonTypes().setAll(javafx.scene.control.ButtonType.OK, javafx.scene.control.ButtonType.CANCEL);
+        alert.showAndWait().ifPresent(response -> {
+            if (response == javafx.scene.control.ButtonType.OK) {
+                callback.run();
+            }
+        });
     }
     
 }

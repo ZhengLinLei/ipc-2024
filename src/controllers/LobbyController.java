@@ -83,4 +83,8 @@ public class LobbyController implements Initializable {
     @FXML
     private void entrarPerfil(MouseEvent event) {
     }
+    
+    public void update() {
+        
+    }
 }
