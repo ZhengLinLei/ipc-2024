@@ -15,6 +15,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import com.itextpdf.html2pdf.HtmlConverter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import javafx.stage.FileChooser;
 
 import model.Acount;
 import model.AcountDAOException;
@@ -139,7 +143,7 @@ public class JavaFXMLApplication extends Application {
     
     public static FXMLLoader cambiarVentana(String nombre, Boolean x) throws IOException{
         stage.setResizable(x);
-
+        
         //Obtener loader
         Parent root;
         if(mapRoots.containsKey(nombre)) root = mapRoots.get(nombre);
@@ -257,6 +261,31 @@ public class JavaFXMLApplication extends Application {
                 callback.run();
             }
         });
+    }
+    
+    public static void exportHTMLToPDF(String html) {
+        if (html == null || html.isEmpty()) {
+            System.out.println("El contenido HTML está vacío. No se puede convertir a PDF.");
+            return;
+        }
+
+        System.out.println("Eligiendo archivo...");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos PDF", "*.pdf"));
+        Stage st2 = new Stage();
+        File file = fileChooser.showSaveDialog(st2);
+
+        if (file != null) {
+            System.out.println("¡Archivo seleccionado!");
+            try (FileOutputStream fos = new FileOutputStream(file)) {
+                HtmlConverter.convertToPdf(html, fos);
+                System.out.println("PDF creado con éxito.");
+            } catch (FileNotFoundException e) {
+                System.out.println("Error al crear el archivo PDF: " + e.getMessage());
+            } catch (IOException e) {
+                System.out.println("Error al crear el archivo PDF: " + e.getMessage());
+            }
+        }
     }
     
 }
