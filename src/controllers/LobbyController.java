@@ -33,8 +33,11 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafxmlapplication.JavaFXMLApplication;
 import model.User;
 import model.Acount;
 import model.AcountDAOException;
@@ -51,11 +54,13 @@ public class LobbyController implements Initializable {
     
     private User user;
     @FXML
-    private FontAwesomeIconView perfil;
+    private Label userName;
     @FXML
-    private FontAwesomeIconView menu;
+    private Label totalGastos;
     @FXML
-    private Button añadirGastos;
+    private Button exportarPDF;
+    @FXML
+    private Button exportarPDF1;
     /**
      * Initializes the controller class.
      */
@@ -78,13 +83,38 @@ public class LobbyController implements Initializable {
     
     public void setUser(User u) throws IOException{
         this.user = u;
+        
+        userName.setText(u.getName());
     }
 
     @FXML
     private void entrarPerfil(MouseEvent event) {
+        try {
+            JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPALPERFIL);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
     public void update() {
         
+    }
+
+    @FXML
+    private void entrarHistorial(MouseEvent event) {
+        System.out.println("Historial");
+        try {
+            JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.GASTOSLISTA);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @FXML
+    private void anadirGastos(MouseEvent event) {
     }
 }
