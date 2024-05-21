@@ -156,6 +156,7 @@ public class LoginController implements Initializable {
             try {
                 // 
                 c.setUser(acc.getLoggedUser());
+                c.update();
             } catch (NullPointerException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
