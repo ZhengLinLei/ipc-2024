@@ -154,7 +154,9 @@ public class LoginController implements Initializable {
             LobbyController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL, true).getController();
             //CategoryListController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.CATEGORIALISTA).getController();
             try {
-                // c.setUser(acc.getLoggedUser());
+                // 
+                c.setUser(acc.getLoggedUser());
+                c.update();
             } catch (NullPointerException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
