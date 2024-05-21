@@ -27,6 +27,7 @@ package controllers;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,11 +39,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafxmlapplication.JavaFXMLApplication;
 import model.User;
 import model.Acount;
 import model.AcountDAOException;
 import model.AcountDAO;
+
 import model.Charge;
 import model.Category;
 import java.util.List;
@@ -52,6 +55,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.Pane;
+
+import model.Category;
+
 
 /**
  * FXML Controller class
@@ -74,6 +80,7 @@ public class LobbyController implements Initializable {
     @FXML
     private Button exportarPDF1;
     @FXML
+
     private PieChart idPieChart;
     @FXML
     private Label n1, n2, n3;
@@ -89,9 +96,19 @@ public class LobbyController implements Initializable {
     private Pane btnC3;
     @FXML
     private Label noDataLabel;
+
+    private Label categoria1;
+    @FXML
+    private Label categoria2;
+    @FXML
+    private Label categoria3;
+    
     /**
      * Initializes the controller class.
      */
+    
+    private List<Category> categorias;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -105,6 +122,14 @@ public class LobbyController implements Initializable {
         catch (AcountDAOException ex) {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
         }        
+
+        
+        
+        try {
+            categorias = acc.getUserCategories();
+        } catch (AcountDAOException ex) {
+            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
     
     

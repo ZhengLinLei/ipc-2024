@@ -250,20 +250,41 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;">
+                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="categoria1" layoutX="14.0" layoutY="39.0" text="Categoria 1">
+                                             <font>
+                                                <Font name="Arial" size="25.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
                                     </Pane>
                                     <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="categoria2" layoutX="14.0" layoutY="39.0" text="Categoria 2">
+                                             <font>
+                                                <Font name="Arial" size="25.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
                                     </Pane>
                                     <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="categoria3" layoutX="14.0" layoutY="39.0" text="Categoria 3">
+                                             <font>
+                                                <Font name="Arial" size="25.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
                                     </Pane>
                                     <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.rowIndex="1">
                                        <GridPane.margin>
