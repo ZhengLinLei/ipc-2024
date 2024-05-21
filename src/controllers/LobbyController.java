@@ -104,7 +104,34 @@ public class LobbyController implements Initializable {
         }
         catch (AcountDAOException ex) {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
+
+        exportarPDF.setOnMouseClicked((e) -> {
+            try {
+                String fechaHoy = new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date());
+                String absPathOfImage = getClass().getResource("/resource/logo2.png").toExternalForm();
+                String html = "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8' /><meta name='viewport' content='width=device-width, initial-scale=1' /><title>PIGGYBANK</title><!-- Favicon --><link rel='icon' href='./images/favicon.png' type='image/x-icon' /><!-- Invoice styling --><style>body {font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;text-align: center;color: #777;}body h1 {font-weight: 300;margin-bottom: 0px;padding-bottom: 0px;color: #000;}body h3 {font-weight: 300;margin-top: 10px;margin-bottom: 20px;font-style: italic;color: #555;}body a {color: #06f;}.invoice-box {max-width: 800px;margin: auto;padding: 30px;border: 1px solid #eee;box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);font-size: 16px;line-height: 24px;font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color: #555;}.invoice-box table {width: 100%;line-height: inherit;text-align: left;border-collapse: collapse;}.invoice-box table td {padding: 5px;vertical-align: top;}.invoice-box table tr td:nth-child(3), .a {text-align: right;}.invoice-box table tr.top table td {padding-bottom: 20px;}.invoice-box table tr.top table td.title {font-size: 45px;line-height: 45px;color: #333;}.invoice-box table tr.information table td {padding-bottom: 40px;}.invoice-box table tr.heading td {background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;}.invoice-box table tr.details td {padding-bottom: 20px;}.invoice-box table tr.item td {border-bottom: 1px solid #eee;}.invoice-box table tr.item.last td {border-bottom: none;}.invoice-box table tr.total td:nth-child(2) {border-top: 2px solid #eee;font-weight: bold;}@media only screen and (max-width: 600px) {.invoice-box table tr.top table td {width: 100%;display: block;text-align: center;}.invoice-box table tr.information table td {width: 100%;display: block;text-align: center;}}</style></head><body><div class='invoice-box'><table><tr class='top'><td colspan='3'><table><tr><td class='title'><img src='"+absPathOfImage+"' alt='Company logo' style='width: 100%; max-width: 300px' /></td><td>PDF de fecha<br />"+fechaHoy+"<br />PIGGYBANK APP</td></tr></table></td></tr><tr class='information'><td colspan='3'><table><tr><td>"+this.user.getName()+"<br />"+this.user.getSurname()+"<br /></td><td>"+this.user.getEmail()+"</td></tr></table></td></tr><tr class='heading'><td>Gasto</td><td>Costo</td> <td float='right'>Uds</td></tr>";
+                // <tr class='item'>
+                //     <td>Website design</td>
+
+                //     <td>$300.00</td>
+
+                //     <td style='text-align: end;'>1</td>
+                // </tr>
+                List<Charge> l = this.acc.getUserCharges();
+                float i = 0;
+                for (Charge c : l) {
+                    i += c.getCost()*c.getUnits();
+                    html += "<tr class='item'><td>" + c.getName() + "</td><td>" + c.getCost() + " €</td><td float='right'>"+c.getUnits()+"</td></tr>";
+                }
+                // Two decimal
+                html += "<tr class='total'><td></td> <td></td><td style='text-align: end'><b>Total: "+ String.format("%.2f", i) + " €</b></td></tr></table></div></body></html>";
+                JavaFXMLApplication.exportHTMLToPDF(html);
+            }
+            catch (AcountDAOException ex) {
+                Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }    
     
     
@@ -167,7 +194,7 @@ public class LobbyController implements Initializable {
                     i--;
 
                 }
-                totalGastosInt += c.getCost();
+                totalGastosInt += c.getCost()*c.getUnits();
                 String cat = c.getCategory().getName();
                 if (map.containsKey(cat)) {
                     map.put(cat, map.get(cat) + c.getCost());
