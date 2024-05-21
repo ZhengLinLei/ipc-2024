@@ -7,3 +7,6 @@ dist/
 zll/
 
 *.db
+
+private.xml
+private.xml.bak
