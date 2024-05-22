@@ -80,7 +80,6 @@ public class LobbyController implements Initializable {
     @FXML
     private Button exportarPDF1;
     @FXML
-
     private PieChart idPieChart;
     @FXML
     private Label n1, n2, n3;
@@ -96,18 +95,45 @@ public class LobbyController implements Initializable {
     private Pane btnC3;
     @FXML
     private Label noDataLabel;
-
-    private Label categoria1;
     @FXML
-    private Label categoria2;
+    private Pane paneCat1;
     @FXML
-    private Label categoria3;
-    
+    private Pane paneCat2;
+    @FXML
+    private Pane paneCat3;
+    @FXML
+    private Pane paneCat4;
+    @FXML
+    private Pane paneCat5;
+    @FXML
+    private Pane paneCat6;
+    @FXML
+    private Pane paneCat7;
+    @FXML
+    private Pane paneCat8;
+    @FXML
+    private Pane paneCat9;
+    @FXML
+    private Label cat1;
+    @FXML
+    private Label cat2;
+    @FXML
+    private Label cat3;
+    @FXML
+    private Label cat4;
+    @FXML
+    private Label cat5;
+    @FXML
+    private Label cat6;
+    @FXML
+    private Label cat7;
+    @FXML
+    private Label cat8;
+    @FXML
+    private Label cat9;
     /**
      * Initializes the controller class.
      */
-    
-    private List<Category> categorias;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -123,12 +149,6 @@ public class LobbyController implements Initializable {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
         }        
         
-        
-        try {
-            categorias = acc.getUserCategories();
-        } catch (AcountDAOException ex) {
-            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }    
     
     
@@ -157,18 +177,22 @@ public class LobbyController implements Initializable {
         Label[] names = {n1, n2, n3};
         Label[] category = {c1, c2, c3};
         Label[] amounts = {a1, a2, a3};
+        Label[] categoryListNames = {cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9};
         Pane[] pane = {btnC1, btnC2, btnC3};
+        Pane[] paneCat = {paneCat1,paneCat2,paneCat3,paneCat4,paneCat5,paneCat6,paneCat7,paneCat8,paneCat9};
         btnC1.setVisible(false);
         btnC2.setVisible(false);
         btnC3.setVisible(false);
         noDataLabel.setVisible(false);
         totalGastosInt = 0;
         int i = 3;
+        int j;
         ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList();
         
         try {
             List<Charge> l = this.acc.getUserCharges();
+            List<Category> l2 = this.acc.getUserCategories();
             // Map with the category and the total amount of money
             java.util.Map<String, Double> map = new java.util.HashMap<>();
             for (Charge c : l) {
@@ -199,6 +223,18 @@ public class LobbyController implements Initializable {
                 else {
                     map.put(cat, c.getCost());
                 }
+            }
+            for(j = 0; j < 9; j++){
+                paneCat[j].setVisible(false);
+            }
+            j = 9;
+            for(Category x : l2){
+                if(j > 0){
+                    categoryListNames[9 - j].setText(x.getName());
+                    paneCat[9 - j].setVisible(true);
+                    
+                }
+                j--;
             }
 
             for (java.util.Map.Entry<String, Double> entry : map.entrySet()) {
