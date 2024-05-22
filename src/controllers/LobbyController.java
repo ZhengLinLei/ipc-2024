@@ -122,7 +122,6 @@ public class LobbyController implements Initializable {
         catch (AcountDAOException ex) {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
         }        
-
         
         
         try {
