@@ -42,7 +42,7 @@
                   </Pane>
                   <Pane prefHeight="83.0" prefWidth="267.0">
                      <children>
-                        <Label layoutX="41.0" layoutY="39.0" text="Hola" textFill="WHITE">
+                        <Label layoutX="41.0" layoutY="39.0" text="Hola," textFill="WHITE">
                            <font>
                               <Font name="Arial Hebrew Bold" size="22.0" />
                            </font>
@@ -238,19 +238,25 @@
                               <Insets bottom="20.0" left="20.0" right="20.0" />
                            </HBox.margin>
                            <children>
-                              <GridPane layoutX="9.0" layoutY="-1.0" prefHeight="348.0" prefWidth="683.0">
+                              <Button fx:id="verHistorialCategorias" layoutX="571.0" layoutY="14.0" mnemonicParsing="false" onAction="#historialCategrorias" onMousePressed="#entrarHistorial" prefHeight="38.0" prefWidth="119.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-width: 0.5; -fx-border-color: grey;" text="  Ver historial">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="EYE" size="14" />
+                                 </graphic>
+                              </Button>
+                              <GridPane layoutX="9.0" layoutY="53.0" prefHeight="348.0" prefWidth="683.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
+                                  <RowConstraints />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Pane fx:id="paneCat1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                    <Pane fx:id="paneCat1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee; -fx-cursor: hand;" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -260,10 +266,10 @@
                                                 <Font name="Arial" size="25.0" />
                                              </font>
                                           </Label>
-                                          <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                          <FontAwesomeIconView fx:id="flecha1" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
                                        </children>
                                     </Pane>
-                                    <Pane fx:id="paneCat2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="1">
+                                    <Pane fx:id="paneCat2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee; -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -273,10 +279,10 @@
                                                 <Font name="Arial" size="25.0" />
                                              </font>
                                           </Label>
-                                          <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                          <FontAwesomeIconView fx:id="flecha2" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
                                        </children>
                                     </Pane>
-                                    <Pane fx:id="paneCat3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="2">
+                                    <Pane fx:id="paneCat3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee; -fx-cursor: hand;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -286,10 +292,10 @@
                                                 <Font name="Arial" size="25.0" />
                                              </font>
                                           </Label>
-                                          <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                          <FontAwesomeIconView fx:id="flecha3" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
                                        </children>
                                     </Pane>
-                                    <Pane fx:id="paneCat4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.rowIndex="1">
+                                    <Pane fx:id="paneCat4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee; -fx-cursor: hand;" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -299,10 +305,10 @@
                                                 <Font name="Arial" size="25.0" />
                                              </font>
                                           </Label>
-                                          <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                          <FontAwesomeIconView fx:id="flecha4" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
                                        </children>
                                     </Pane>
-                                    <Pane fx:id="paneCat5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Pane fx:id="paneCat5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee; -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -312,10 +318,10 @@
                                                 <Font name="Arial" size="25.0" />
                                              </font>
                                           </Label>
-                                          <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                          <FontAwesomeIconView fx:id="flecha5" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
                                        </children>
                                     </Pane>
-                                    <Pane fx:id="paneCat6" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                    <Pane fx:id="paneCat6" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee; -fx-cursor: hand;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -325,10 +331,10 @@
                                                 <Font name="Arial" size="25.0" />
                                              </font>
                                           </Label>
-                                          <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                          <FontAwesomeIconView fx:id="flecha6" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
                                        </children>
                                     </Pane>
-                                    <Pane fx:id="paneCat7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.rowIndex="2">
+                                    <Pane fx:id="paneCat7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee; -fx-cursor: hand;" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -338,10 +344,10 @@
                                                 <Font name="Arial" size="25.0" />
                                              </font>
                                           </Label>
-                                          <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                          <FontAwesomeIconView fx:id="flecha7" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
                                        </children>
                                     </Pane>
-                                    <Pane fx:id="paneCat8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Pane fx:id="paneCat8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee; -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -351,10 +357,10 @@
                                                 <Font name="Arial" size="25.0" />
                                              </font>
                                           </Label>
-                                          <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                          <FontAwesomeIconView fx:id="flecha8" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
                                        </children>
                                     </Pane>
-                                    <Pane fx:id="paneCat9" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                    <Pane fx:id="paneCat9" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee; -fx-cursor: hand;" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -364,12 +370,18 @@
                                                 <Font name="Arial" size="25.0" />
                                              </font>
                                           </Label>
-                                          <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                          <FontAwesomeIconView fx:id="flecha9" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
                                        </children>
                                     </Pane>
                                  </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
                               </GridPane>
                            </children>
+                           <opaqueInsets>
+                              <Insets top="10.0" />
+                           </opaqueInsets>
                         </Pane>
                      </children>
                      <padding>

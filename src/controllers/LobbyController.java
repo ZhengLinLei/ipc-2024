@@ -53,11 +53,12 @@ import java.util.List;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.Pane;
+import static javafx.scene.paint.Color.WHITE;
 
 import model.Category;
-
 
 /**
  * FXML Controller class
@@ -131,6 +132,26 @@ public class LobbyController implements Initializable {
     private Label cat8;
     @FXML
     private Label cat9;
+    @FXML
+    private FontAwesomeIconView flecha1;
+    @FXML
+    private FontAwesomeIconView flecha2;
+    @FXML
+    private FontAwesomeIconView flecha3;
+    @FXML
+    private FontAwesomeIconView flecha4;
+    @FXML
+    private FontAwesomeIconView flecha5;
+    @FXML
+    private FontAwesomeIconView flecha6;
+    @FXML
+    private FontAwesomeIconView flecha7;
+    @FXML
+    private FontAwesomeIconView flecha8;
+    @FXML
+    private FontAwesomeIconView flecha9;
+    @FXML
+    private Button verHistorialCategorias;
     /**
      * Initializes the controller class.
      */
@@ -180,6 +201,7 @@ public class LobbyController implements Initializable {
         Label[] categoryListNames = {cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9};
         Pane[] pane = {btnC1, btnC2, btnC3};
         Pane[] paneCat = {paneCat1,paneCat2,paneCat3,paneCat4,paneCat5,paneCat6,paneCat7,paneCat8,paneCat9};
+        FontAwesomeIconView[] flechas = {flecha1,flecha2,flecha3,flecha4,flecha5,flecha6,flecha7,flecha8,flecha9};
         btnC1.setVisible(false);
         btnC2.setVisible(false);
         btnC3.setVisible(false);
@@ -232,11 +254,30 @@ public class LobbyController implements Initializable {
                 if(j > 0){
                     categoryListNames[9 - j].setText(x.getName());
                     paneCat[9 - j].setVisible(true);
+                    paneCat[9 - j].setOnMouseClicked((e) -> {
+                    CategoryInfoController catCtrl;
+                        try {
+                            catCtrl = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.CATEGORIAINFO).getController();
+                            catCtrl.setReturn(JavaFXMLApplication.PRINCIPAL);
+                            catCtrl.setCategory(x);
+                        } catch (IOException ex) {
+                            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     
+                    });
                 }
                 j--;
             }
-
+            //Show add category button
+            System.out.println(j);
+            categoryListNames[9 - j].setText("Añadir categorías");
+            categoryListNames[9 - j].setStyle("-fx-text-fill: WHITE; -fx-font-size: 16pt");
+            flechas[9 - j].setFill(WHITE);
+            paneCat[9 - j].setStyle("-fx-background-color: #e85a9d; -fx-cursor: hand");
+            paneCat[9 - j].setVisible(true);
+            
+            //pie chart
+            
             for (java.util.Map.Entry<String, Double> entry : map.entrySet()) {
                 System.out.println(entry.getKey() + " " + entry.getValue());
                 pieChartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
@@ -284,5 +325,15 @@ public class LobbyController implements Initializable {
 
     @FXML
     private void anadirGastos(MouseEvent event) {
+    }
+
+    @FXML
+    private void historialCategrorias(ActionEvent event) {
+        try {
+            JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.CATEGORIALISTA);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
