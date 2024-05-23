@@ -314,6 +314,7 @@ public class JavaFXMLApplication extends Application {
             System.out.println("¡Archivo seleccionado!");
             try (FileOutputStream fos = new FileOutputStream(file)) {
                 HtmlConverter.convertToPdf(html, fos);
+                
                 System.out.println("PDF creado con éxito.");
             } catch (FileNotFoundException e) {
                 System.out.println("Error al crear el archivo PDF: " + e.getMessage());
