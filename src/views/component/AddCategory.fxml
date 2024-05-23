@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="335.0" prefWidth="297.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddCategoryController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="87.00000762939453" minHeight="10.0" prefHeight="63.33330535888672" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="87.00000762939453" minHeight="10.0" prefHeight="63.33330535888672" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="180.66668446858725" minHeight="10.0" prefHeight="161.66666666666666" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="93.33331298828125" minHeight="10.0" prefHeight="50.333333333333314" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Text fill="#e85a9d" strokeType="OUTSIDE" strokeWidth="0.0" text="Nueva categoría" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <children>
+            <FontAwesomeIconView fill="#e85a9d" glyphName="TAG" size="16" textAlignment="CENTER" wrappingWidth="10.627388954162598">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <TextField fx:id="nameTextField" focusTraversable="false" prefHeight="36.0" prefWidth="217.0" promptText="Nombre">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+            <FontAwesomeIconView fill="#e85a9d" glyphName="FILE" size="16" textAlignment="CENTER" wrappingWidth="10.627388954162598">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <TextArea fx:id="descTextField" focusTraversable="false" minHeight="0.0" minWidth="0.0" prefHeight="128.0" prefWidth="217.0" promptText="Descripción">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+         <children>
+            <Button fx:id="addBtn" alignment="CENTER" mnemonicParsing="false" onAction="#addCategory" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #e85a9d; -fx-background-radius: 5;" text="Añadir" textAlignment="CENTER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="90.0" style="-fx-border-color: #e85a9d; -fx-border-radius: 5; -fx-background-color: transparent;" text="Cancelar" textAlignment="CENTER" textFill="#e85a9d">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <HBox.margin>
+                  <Insets left="27.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="13.0" />
+   </padding>
+</GridPane>
