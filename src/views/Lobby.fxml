@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LobbyController">
+<BorderPane prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #eeeeee;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LobbyController">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e85a9d;" BorderPane.alignment="CENTER">
          <children>
@@ -42,7 +42,7 @@
                   </Pane>
                   <Pane prefHeight="83.0" prefWidth="267.0">
                      <children>
-                        <Label layoutX="41.0" layoutY="39.0" text="Hola" textFill="WHITE">
+                        <Label layoutX="41.0" layoutY="39.0" text="Hola," textFill="WHITE">
                            <font>
                               <Font name="Arial Hebrew Bold" size="22.0" />
                            </font>
@@ -77,7 +77,7 @@
    <center>
       <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
-            <VBox prefHeight="964.0" prefWidth="784.0">
+            <VBox prefHeight="965.0" prefWidth="784.0">
                <children>
                   <HBox prefHeight="473.0" prefWidth="784.0">
                      <children>
@@ -154,7 +154,11 @@
                                                             <Font name="Arial Hebrew Bold" size="24.0" />
                                                          </font>
                                                       </Label>
-                                                      <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="244.0" layoutY="41.0" size="32" />
+                                                      <Button layoutX="231.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                                                         <graphic>
+                                                            <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="32" />
+                                                         </graphic>
+                                                      </Button>
                                                    </children>
                                                 </Pane>
                                                 <Pane fx:id="btnC2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fefefe; -fx-border-width: 0.5; -fx-border-color: grey;" visible="false" GridPane.rowIndex="1">
@@ -178,7 +182,11 @@
                                                             <Font name="Arial Hebrew Bold" size="24.0" />
                                                          </font>
                                                       </Label>
-                                                      <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="243.0" layoutY="40.0" size="32" />
+                                                      <Button layoutX="231.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                                                         <graphic>
+                                                            <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="32" />
+                                                         </graphic>
+                                                      </Button>
                                                    </children>
                                                 </Pane>
                                                 <Pane fx:id="btnC3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fefefe; -fx-border-width: 0.5; -fx-border-color: grey;" visible="false" GridPane.rowIndex="2">
@@ -202,7 +210,11 @@
                                                             <Font name="Arial Hebrew Bold" size="24.0" />
                                                          </font>
                                                       </Label>
-                                                      <FontAwesomeIconView glyphName="ANGLE_RIGHT" layoutX="241.0" layoutY="43.0" size="32" />
+                                                      <Button layoutX="231.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                                                         <graphic>
+                                                            <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="32" />
+                                                         </graphic>
+                                                      </Button>
                                                    </children>
                                                 </Pane>
                                              </children>
@@ -238,66 +250,155 @@
                               <Insets bottom="20.0" left="20.0" right="20.0" />
                            </HBox.margin>
                            <children>
-                              <GridPane layoutX="9.0" layoutY="14.0" prefHeight="348.0" prefWidth="683.0">
+                              <Button fx:id="verHistorialCategorias" layoutX="571.0" layoutY="14.0" mnemonicParsing="false" onAction="#historialCategrorias" prefHeight="38.0" prefWidth="119.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-width: 0.5; -fx-border-color: grey;" text="  Ver lista">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="EYE" size="14" />
+                                 </graphic>
+                              </Button>
+                              <GridPane layoutX="9.0" layoutY="53.0" prefHeight="348.0" prefWidth="683.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
+                                  <RowConstraints />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;">
+                                    <Pane fx:id="paneCat1" prefHeight="200.0" prefWidth="200.0" style="-fx-cursor: hand; -fx-border-color: grey; -fx-border-image-width: 0.5; -fx-background-color: #fefefe;" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="cat1" layoutX="14.0" layoutY="39.0" maxWidth="-Infinity" prefHeight="30.0" prefWidth="170.0" text="Categoria 1">
+                                             <font>
+                                                <Font name="Arial" size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fx:id="flecha1" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                       </children>
                                     </Pane>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="1">
+                                    <Pane fx:id="paneCat2" prefHeight="200.0" prefWidth="200.0" style="-fx-cursor: hand; -fx-border-color: grey; -fx-border-image-width: 0.5; -fx-background-color: #fefefe;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="cat2" layoutX="14.0" layoutY="39.0" maxWidth="-Infinity" prefHeight="30.0" prefWidth="173.0" text="Categoria 2">
+                                             <font>
+                                                <Font name="Arial" size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fx:id="flecha2" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                       </children>
                                     </Pane>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="2">
+                                    <Pane fx:id="paneCat3" prefHeight="200.0" prefWidth="200.0" style="-fx-cursor: hand; -fx-border-color: grey; -fx-border-image-width: 0.5; -fx-background-color: #fefefe;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="cat3" layoutX="14.0" layoutY="39.0" maxWidth="-Infinity" prefHeight="30.0" prefWidth="175.0" text="Categoria 3">
+                                             <font>
+                                                <Font name="Arial" size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fx:id="flecha3" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                       </children>
                                     </Pane>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.rowIndex="1">
+                                    <Pane fx:id="paneCat4" prefHeight="200.0" prefWidth="200.0" style="-fx-cursor: hand; -fx-border-color: grey; -fx-border-image-width: 0.5; -fx-background-color: #fefefe;" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="cat4" layoutX="14.0" layoutY="39.0" text="Categoria 4">
+                                             <font>
+                                                <Font name="Arial" size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fx:id="flecha4" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                       </children>
                                     </Pane>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Pane fx:id="paneCat5" prefHeight="200.0" prefWidth="200.0" style="-fx-cursor: hand; -fx-border-color: grey; -fx-border-image-width: 0.5; -fx-background-color: #fefefe;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="cat5" layoutX="14.0" layoutY="39.0" text="Categoria 5">
+                                             <font>
+                                                <Font name="Arial" size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fx:id="flecha5" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                       </children>
                                     </Pane>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                    <Pane fx:id="paneCat6" prefHeight="200.0" prefWidth="200.0" style="-fx-cursor: hand; -fx-border-color: grey; -fx-border-image-width: 0.5; -fx-background-color: #fefefe;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="cat6" layoutX="14.0" layoutY="39.0" text="Categoria 6">
+                                             <font>
+                                                <Font name="Arial" size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fx:id="flecha6" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                       </children>
                                     </Pane>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.rowIndex="2">
+                                    <Pane fx:id="paneCat7" prefHeight="200.0" prefWidth="200.0" style="-fx-cursor: hand; -fx-border-color: grey; -fx-border-image-width: 0.5; -fx-background-color: #fefefe;" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="cat7" layoutX="14.0" layoutY="39.0" text="Categoria 7">
+                                             <font>
+                                                <Font name="Arial" size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fx:id="flecha7" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                       </children>
                                     </Pane>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Pane fx:id="paneCat8" prefHeight="200.0" prefWidth="200.0" style="-fx-cursor: hand; -fx-border-color: grey; -fx-border-image-width: 0.5; -fx-background-color: #fefefe;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="cat8" layoutX="14.0" layoutY="39.0" text="Categoria 8">
+                                             <font>
+                                                <Font name="Arial" size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fx:id="flecha8" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                       </children>
                                     </Pane>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                    <Pane fx:id="paneCat9" prefHeight="200.0" prefWidth="200.0" style="-fx-cursor: hand; -fx-border-color: grey; -fx-border-image-width: 0.5; -fx-background-color: #fefefe;" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
+                                       <children>
+                                          <Label fx:id="cat9" layoutX="14.0" layoutY="39.0" text="Categoria 9">
+                                             <font>
+                                                <Font name="Arial" size="21.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fx:id="flecha9" glyphName="ANGLE_RIGHT" layoutX="192.0" layoutY="65.0" size="32" />
+                                       </children>
                                     </Pane>
                                  </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
                               </GridPane>
+                              <Label layoutX="15.0" layoutY="13.0" text="Categorias">
+                                 <font>
+                                    <Font name="Arial Hebrew" size="18.0" />
+                                 </font>
+                              </Label>
                            </children>
+                           <opaqueInsets>
+                              <Insets top="10.0" />
+                           </opaqueInsets>
                         </Pane>
                      </children>
                      <padding>

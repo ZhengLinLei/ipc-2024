@@ -142,7 +142,7 @@ public class JavaFXMLApplication extends Application {
     }
     
     public static FXMLLoader cambiarVentana(String nombre, Boolean x) throws IOException{
-        stage.setResizable(x);
+        stage.setResizable(true);
         
         //Obtener loader
         Parent root;
@@ -156,6 +156,41 @@ public class JavaFXMLApplication extends Application {
             return mapLoaders.get(nombre);
         }
         return null;
+    }
+
+    // Mostrar ventana simultanea
+    public static FXMLLoader mostrarVentana(String nombre) throws IOException{
+        FXMLLoader loader = mapLoaders.get(nombre);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setResizable(false);
+
+        double width = getWidth();
+        double height = getHeight();
+
+        redimensionar(width, height);
+        stage.setScene(scene);
+        stage.setTitle(nombre);
+        stage.show();
+        return loader;
+    }
+
+    public static FXMLLoader mostrarVentana(String nombre, Boolean x) throws IOException{
+        FXMLLoader loader = mapLoaders.get(nombre);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setResizable(true);
+
+        double width = getWidth();
+        double height = getHeight();
+
+        redimensionar(width, height);
+        stage.setScene(scene);
+        stage.setTitle(nombre);
+        stage.show();
+        return loader;
     }
 
     /**

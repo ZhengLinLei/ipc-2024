@@ -27,6 +27,7 @@ package controllers;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,11 +39,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafxmlapplication.JavaFXMLApplication;
 import model.User;
 import model.Acount;
 import model.AcountDAOException;
 import model.AcountDAO;
+
 import model.Charge;
 import model.Category;
 import java.util.List;
@@ -50,8 +53,12 @@ import java.util.List;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.Pane;
+import static javafx.scene.paint.Color.WHITE;
+
+import model.Category;
 
 /**
  * FXML Controller class
@@ -82,16 +89,21 @@ public class LobbyController implements Initializable {
     @FXML
     private Label a1, a2, a3;
     @FXML
-    private Pane btnC1;
-    @FXML
-    private Pane btnC2;
-    @FXML
-    private Pane btnC3;
+    private Pane btnC1, btnC2, btnC3;
     @FXML
     private Label noDataLabel;
+    @FXML
+    private Pane paneCat1, paneCat2, paneCat3, paneCat4, paneCat5, paneCat6, paneCat7, paneCat8, paneCat9;
+    @FXML
+    private Label cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9;
+    @FXML
+    private FontAwesomeIconView flecha1, flecha2, flecha3, flecha4, flecha5, flecha6, flecha7, flecha8, flecha9;
+    @FXML
+    private Button verHistorialCategorias;
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -164,18 +176,23 @@ public class LobbyController implements Initializable {
         Label[] names = {n1, n2, n3};
         Label[] category = {c1, c2, c3};
         Label[] amounts = {a1, a2, a3};
+        Label[] categoryListNames = {cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9};
         Pane[] pane = {btnC1, btnC2, btnC3};
+        Pane[] paneCat = {paneCat1,paneCat2,paneCat3,paneCat4,paneCat5,paneCat6,paneCat7,paneCat8,paneCat9};
+        FontAwesomeIconView[] flechas = {flecha1,flecha2,flecha3,flecha4,flecha5,flecha6,flecha7,flecha8,flecha9};
         btnC1.setVisible(false);
         btnC2.setVisible(false);
         btnC3.setVisible(false);
         noDataLabel.setVisible(false);
         totalGastosInt = 0;
         int i = 3;
+        int j;
         ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList();
         
         try {
             List<Charge> l = this.acc.getUserCharges();
+            List<Category> l2 = this.acc.getUserCategories();
             // Map with the category and the total amount of money
             java.util.Map<String, Double> map = new java.util.HashMap<>();
             for (Charge c : l) {
@@ -207,7 +224,38 @@ public class LobbyController implements Initializable {
                     map.put(cat, c.getCost());
                 }
             }
-
+            for(j = 0; j < 9; j++){
+                paneCat[j].setVisible(false);
+            }
+            j = 9;
+            for(Category x : l2){
+                if(j > 0){
+                    categoryListNames[9 - j].setText(x.getName());
+                    paneCat[9 - j].setVisible(true);
+                    paneCat[9 - j].setOnMouseClicked((e) -> {
+                    CategoryInfoController catCtrl;
+                        try {
+                            catCtrl = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.CATEGORIAINFO).getController();
+                            catCtrl.setReturn(JavaFXMLApplication.PRINCIPAL);
+                            catCtrl.setCategory(x);
+                        } catch (IOException ex) {
+                            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    
+                    });
+                }
+                j--;
+            }
+            //Show add category button
+            System.out.println(j);
+            categoryListNames[9 - j].setText("Añadir categorías");
+            categoryListNames[9 - j].setStyle("-fx-text-fill: WHITE; -fx-font-size: 16pt");
+            flechas[9 - j].setFill(WHITE);
+            paneCat[9 - j].setStyle("-fx-background-color: #e85a9d; -fx-cursor: hand");
+            paneCat[9 - j].setVisible(true);
+            
+            //pie chart
+            
             for (java.util.Map.Entry<String, Double> entry : map.entrySet()) {
                 System.out.println(entry.getKey() + " " + entry.getValue());
                 pieChartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
@@ -255,5 +303,15 @@ public class LobbyController implements Initializable {
 
     @FXML
     private void anadirGastos(MouseEvent event) {
+    }
+
+    @FXML
+    private void historialCategrorias(ActionEvent event) {
+        try {
+            JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.CATEGORIALISTA);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
