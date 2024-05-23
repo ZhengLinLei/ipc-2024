@@ -106,7 +106,7 @@
                               </VBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="modifyBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: #e85a9d; -fx-cursor: hand; -fx-opacity: 0;" styleClass="confirmBtn" stylesheets="@../css/Profile.css" text="Modificar" textFill="WHITE">
+                                    <Button fx:id="modifyBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: #e85a9d; -fx-cursor: hand;" styleClass="confirmBtn" stylesheets="@../css/Profile.css" text="Modificar" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Hebrew" size="18.0" />
                                        </font>

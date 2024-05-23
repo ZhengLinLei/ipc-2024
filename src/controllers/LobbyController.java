@@ -89,67 +89,15 @@ public class LobbyController implements Initializable {
     @FXML
     private Label a1, a2, a3;
     @FXML
-    private Pane btnC1;
-    @FXML
-    private Pane btnC2;
-    @FXML
-    private Pane btnC3;
+    private Pane btnC1, btnC2, btnC3;
     @FXML
     private Label noDataLabel;
     @FXML
-    private Pane paneCat1;
+    private Pane paneCat1, paneCat2, paneCat3, paneCat4, paneCat5, paneCat6, paneCat7, paneCat8, paneCat9;
     @FXML
-    private Pane paneCat2;
+    private Label cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9;
     @FXML
-    private Pane paneCat3;
-    @FXML
-    private Pane paneCat4;
-    @FXML
-    private Pane paneCat5;
-    @FXML
-    private Pane paneCat6;
-    @FXML
-    private Pane paneCat7;
-    @FXML
-    private Pane paneCat8;
-    @FXML
-    private Pane paneCat9;
-    @FXML
-    private Label cat1;
-    @FXML
-    private Label cat2;
-    @FXML
-    private Label cat3;
-    @FXML
-    private Label cat4;
-    @FXML
-    private Label cat5;
-    @FXML
-    private Label cat6;
-    @FXML
-    private Label cat7;
-    @FXML
-    private Label cat8;
-    @FXML
-    private Label cat9;
-    @FXML
-    private FontAwesomeIconView flecha1;
-    @FXML
-    private FontAwesomeIconView flecha2;
-    @FXML
-    private FontAwesomeIconView flecha3;
-    @FXML
-    private FontAwesomeIconView flecha4;
-    @FXML
-    private FontAwesomeIconView flecha5;
-    @FXML
-    private FontAwesomeIconView flecha6;
-    @FXML
-    private FontAwesomeIconView flecha7;
-    @FXML
-    private FontAwesomeIconView flecha8;
-    @FXML
-    private FontAwesomeIconView flecha9;
+    private FontAwesomeIconView flecha1, flecha2, flecha3, flecha4, flecha5, flecha6, flecha7, flecha8, flecha9;
     @FXML
     private Button verHistorialCategorias;
     /**
