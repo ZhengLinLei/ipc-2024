@@ -19,6 +19,7 @@ import com.itextpdf.html2pdf.HtmlConverter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 
 import model.Acount;
 import model.AcountDAOException;
@@ -36,6 +37,7 @@ public class JavaFXMLApplication extends Application {
     public static final String PRINCIPAL = "Dashboard";
     public static final String REGISTRO = "Registrarse";
     public static final String REGISTROAVATAR = "Registrarse Avatar";
+    public static final String ADDCHARGE = "Añadir gasto";
     
     
     // Subventanas
@@ -46,6 +48,7 @@ public class JavaFXMLApplication extends Application {
     public static final String GASTOSINFO = "Información de gasto";
     public static final String CATEGORIALISTA = "Categorías";
     public static final String CATEGORIAINFO = "Información de categoría";
+    public static final String ADDCATEGORIA = "Añadir categoría";
 
 
     //Fin Nombre Ventanas
@@ -89,13 +92,16 @@ public class JavaFXMLApplication extends Application {
         mapLoaders.put(PRINCIPAL, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "Lobby.fxml")));
         mapLoaders.put(REGISTRO, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "Register.fxml")));
         mapLoaders.put(REGISTROAVATAR, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "Register2.fxml")));
+        mapLoaders.put(ADDCHARGE, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "AddCharge.fxml")));
 
+        
         mapLoaders.put(PRINCIPALPERFIL, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "Profile.fxml")));
         
         mapLoaders.put(GASTOSLISTA, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "ChargeList.fxml")));
         mapLoaders.put(GASTOSINFO, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "ChargeInfo.fxml")));
         mapLoaders.put(CATEGORIALISTA, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "CategoryList.fxml")));
         mapLoaders.put(CATEGORIAINFO, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "CategoryInfo.fxml")));
+        mapLoaders.put(ADDCATEGORIA, new FXMLLoader(getClass().getResource(".." +File.separator + "views" + File.separator + "component" + File.separator + "AddCategory.fxml")));
 
         mapRoots = new HashMap<>();
     }
@@ -159,8 +165,9 @@ public class JavaFXMLApplication extends Application {
     }
 
     // Mostrar ventana simultanea
-    public static FXMLLoader mostrarVentana(String nombre) throws IOException{
+    public static Stage mostrarVentana(String nombre) throws IOException{
         FXMLLoader loader = mapLoaders.get(nombre);
+        //FXMLLoader loader = new FXMLLoader(JavaFXMLApplication.class.getResource(nombre));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -172,8 +179,8 @@ public class JavaFXMLApplication extends Application {
         redimensionar(width, height);
         stage.setScene(scene);
         stage.setTitle(nombre);
-        stage.show();
-        return loader;
+        stage.showAndWait();
+        return stage;
     }
 
     public static FXMLLoader mostrarVentana(String nombre, Boolean x) throws IOException{
