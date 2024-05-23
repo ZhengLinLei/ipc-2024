@@ -53,11 +53,16 @@ import java.util.List;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.event.ActionEvent;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import static javafx.scene.paint.Color.WHITE;
-
 import model.Category;
 
 /**
@@ -158,15 +163,15 @@ public class LobbyController implements Initializable {
     }
 
     @FXML
-    private void entrarPerfil(MouseEvent event) {
+    private void entrarPerfil(MouseEvent event) throws IOException {
         try {
             JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPALPERFIL);
         }
         catch (IOException ex) {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
+    
     
     public void update() {
         // Reset pie chart
@@ -302,7 +307,24 @@ public class LobbyController implements Initializable {
     }
 
     @FXML
-    private void anadirGastos(MouseEvent event) {
+    private void anadirGastos(MouseEvent event) throws AcountDAOException {
+        try {
+            acc = Acount.getInstance();
+            if (acc.getUserCategories() != null){
+                JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.ADDCHARGE);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Advertencia");
+                alert.setHeaderText("No hay ninguna categoría creada");
+                alert.setContentText("Crea una categoría si desea añadir un gasto");
+                alert.showAndWait();
+                JavaFXMLApplication.mostrarVentana(JavaFXMLApplication.ADDCATEGORIA);
+            }
+
+        }
+        catch (IOException ex) {
+            Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
