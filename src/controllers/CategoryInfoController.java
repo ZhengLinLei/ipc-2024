@@ -81,11 +81,58 @@ public class CategoryInfoController implements Initializable {
         // Disable inputs
         categoryName.setEditable(false);
         categoryDescription.setEditable(false);
+
+        // Add action to modify the button
+        // Disable modify button opacity 0
+        modifyBtn.setOnMouseClicked(e -> {
+            setModify(true);
+        });
+
+        // Add action to delete the button
+        deleteBtn.setOnAction(e -> {
+            // Show confirmation dialog
+            JavaFXMLApplication.showConfirm("Eliminar categoria", "¿Estás seguro de que quieres eliminar esta categoría?", "Eliminar la categoría eliminará todo los cargos asociados a la categoría", "Eliminar", "Cancelar", () -> {
+                try {
+                    Acount acc = Acount.getInstance();
+                    // Remove all charges from this category
+                    List<Charge> charges = acc.getUserCharges();
+                    for (Charge charge : charges) {
+                        if (charge.getCategory().getName().equals(category.getName())) {
+                            acc.removeCharge(charge);
+                        }
+                    }
+                    acc.removeCategory(category);
+                    // Click backLobby
+                    backLobby.fire();
+                } catch (AcountDAOException ex) {
+                    Logger.getLogger(CategoryInfoController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(CategoryInfoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+        });
     }
 
     public void setModify(Boolean modify) {
-        categoryName.setEditable(true);
         categoryDescription.setEditable(true);
+
+        if (modifyBtn.getText().equals("Modificar")) {
+            modifyBtn.setText("Guardar");
+        } else {
+            modifyBtn.setText("Modificar");
+            category.setName(categoryName.getText());
+            category.setDescription(categoryDescription.getText());
+            try {
+                Acount acc = Acount.getInstance();
+                acc.removeCategory(category);
+
+                acc.registerCategory(category.getName(), category.getDescription());
+            } catch (AcountDAOException ex) {
+                Logger.getLogger(CategoryInfoController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(CategoryInfoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     public void setCategory(Category category) {
@@ -219,6 +266,8 @@ public class CategoryInfoController implements Initializable {
     
     public void setReturn(String ret) {
         backLobby.setOnAction(e -> {
+            modifyBtn.setText("Modificar");
+
             try {
                 if (ret.equals(JavaFXMLApplication.CATEGORIALISTA)) {
                     CategoryListController c = null;
