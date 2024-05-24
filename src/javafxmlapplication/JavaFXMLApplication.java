@@ -28,6 +28,10 @@ import model.AcountDAOException;
 public class JavaFXMLApplication extends Application {
     private static Stage stage;
     private static Scene scene;
+
+    // Categoría
+    private static Stage stageCategoria;
+    private static Scene sceneCategoria;
     
     private static Map<String, FXMLLoader> mapLoaders;
     private static Map<String, Parent> mapRoots;
@@ -53,7 +57,11 @@ public class JavaFXMLApplication extends Application {
 
     //Fin Nombre Ventanas
     @Override
-    public void start(Stage s) throws Exception {   
+    public void start(Stage s) throws Exception {
+        
+        stageCategoria = new Stage();
+        stageCategoria.initModality(Modality.APPLICATION_MODAL);
+        
         stage = s;
         stage.setMinWidth(800);
         stage.setMinHeight(800);
@@ -166,21 +174,30 @@ public class JavaFXMLApplication extends Application {
 
     // Mostrar ventana simultanea
     public static Stage mostrarVentana(String nombre) throws IOException{
-        FXMLLoader loader = mapLoaders.get(nombre);
-        //FXMLLoader loader = new FXMLLoader(JavaFXMLApplication.class.getResource(nombre));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setResizable(false);
+        //Obtener loader
+        Parent root;
+        if(mapRoots.containsKey(nombre)) root = mapRoots.get(nombre);
+        else {
+            root = mapLoaders.get(nombre).load();
+            mapRoots.put(nombre, root);
+        }
+        if (root == null) return null;
 
         double width = getWidth();
         double height = getHeight();
-
+        
+        // System.out.println(width + " "+ height);
+        if (sceneCategoria == null) sceneCategoria = new Scene(root);
+        else sceneCategoria.setRoot(root);
+        // scene.setRoot(root);
+        
+        stageCategoria.setScene(sceneCategoria);
+        stageCategoria.setTitle(nombre);
         redimensionar(width, height);
-        stage.setScene(scene);
-        stage.setTitle(nombre);
-        stage.showAndWait();
-        return stage;
+
+        // Show and stop the main stage
+        stageCategoria.showAndWait();
+        return stageCategoria;
     }
 
     public static FXMLLoader mostrarVentana(String nombre, Boolean x) throws IOException{

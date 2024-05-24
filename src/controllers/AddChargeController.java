@@ -169,9 +169,32 @@ public class AddChargeController implements Initializable {
                            chargeImage.getImage(), 
                            chargeDate.getValue(), 
                            (Category) cat);
+
+            // Alert
+            JavaFXMLApplication.showAlert("Carga exitosa", "La carga se ha realizado con éxito", "Se ha registrado la carga correctamente", AlertType.INFORMATION);
             clearAll();
         }
         
+    }
+
+    public void setReturn(String ret) {
+        update();
+        clearAll();
+        backLobby.setOnAction(e -> {
+            try {
+                if (ret.equals(JavaFXMLApplication.GASTOSLISTA)) {
+                    ChargeListController c = null;
+                    c = JavaFXMLApplication.cambiarVentana(ret).getController();
+                    c.update();
+                } else {
+                    LobbyController c = null;
+                    c = JavaFXMLApplication.cambiarVentana(ret).getController();
+                    c.update();
+                }
+            } catch ( IOException ex) {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
     @FXML
@@ -188,27 +211,26 @@ public class AddChargeController implements Initializable {
     @FXML
     private void addCategory(ActionEvent event) {
         try {
-            Stage c = JavaFXMLApplication.mostrarVentana(JavaFXMLApplication.ADDCATEGORIA);
+            JavaFXMLApplication.mostrarVentana(JavaFXMLApplication.ADDCATEGORIA);
             
-            c.setOnCloseRequest(eh -> {
-                System.out.println("aaaaa");
-                update();
-            });
+            update();
         }
         catch (IOException ex) {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    private void update() {
+    public void update() {
         try {
-           Acount acc = Acount.getInstance();
-           categories = acc.getUserCategories();
-           mapCategory = new HashMap<>();
-           for (Category c : categories) {
-               mapCategory.put(c.getName(), c);
-               chargeCategoryName.getItems().add(c.getName());
-           }
+            // Remove all
+            chargeCategoryName.getItems().removeAll(chargeCategoryName.getItems());
+            Acount acc = Acount.getInstance();
+            categories = acc.getUserCategories();
+            mapCategory = new HashMap<>();
+            for (Category c : categories) {
+                mapCategory.put(c.getName(), c);
+                chargeCategoryName.getItems().add(c.getName());
+            }
         } catch (IOException | AcountDAOException e) {
            System.out.println(e);
         } 

@@ -141,13 +141,13 @@
                                                 <Insets right="20.0" />
                                              </HBox.margin>
                                           </FontAwesomeIconView>
-                                          <ChoiceBox fx:id="chargeCategoryName" prefHeight="41.0" prefWidth="244.0">
+                                          <ChoiceBox fx:id="chargeCategoryName" prefHeight="41.0" prefWidth="250.0">
                                              <HBox.margin>
                                                 <Insets right="20.0" />
                                              </HBox.margin></ChoiceBox>
-                                          <Button mnemonicParsing="false" onAction="#addCategory" prefHeight="41.0" prefWidth="41.0" style="-fx-background-color: transparent; -fx-border-color: #e85a9d; -fx-border-radius: 5;">
+                                          <Button mnemonicParsing="false" onAction="#addCategory" prefHeight="41.0" prefWidth="41.0" style="-fx-border-radius: 5;">
                                              <graphic>
-                                                <FontAwesomeIconView fill="#e85a9d" glyphName="PLUS" size="16" textAlignment="CENTER" wrappingWidth="16.627389430999756">
+                                                <FontAwesomeIconView fill="#282828" glyphName="PLUS" size="16" textAlignment="CENTER" wrappingWidth="16.627389430999756">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
