@@ -51,6 +51,7 @@ public class CategoryListController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
         // Add action to the button
         backLobby.setOnAction(e -> {
             try {
@@ -103,7 +104,8 @@ public class CategoryListController implements Initializable {
         // Add action to the button
         addbtn.setOnAction(e -> {
             try {
-                JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.GASTOSLISTA);
+                JavaFXMLApplication.mostrarVentana(JavaFXMLApplication.ADDCATEGORIA);
+                update();
                 ActiveCategory = null;
                 disableActive();
             } catch ( IOException ex) {
@@ -115,7 +117,7 @@ public class CategoryListController implements Initializable {
             try {
                 // Alert confirmation
                 Acount acc = Acount.getInstance();
-                JavaFXMLApplication.showConfirm("Eliminar categoria", "¿Estás seguro de que quieres eliminar esta categoria?", "Esta acción no se puede deshacer\nCategoria: "+ActiveCategory.getName(), "Eliminar", "Cancelar", () -> {
+                JavaFXMLApplication.showConfirm("Eliminar categoria", "¿Estás seguro de que quieres eliminar esta categoria?", "Esta acción no se puede deshacer y supone borrar todo los cargos de dicha categoria\nCategoria: "+ActiveCategory.getName(), "Eliminar", "Cancelar", () -> {
                     try {
                         acc.removeCategory(ActiveCategory);
                         ActiveCategory = null;
@@ -188,6 +190,24 @@ public class CategoryListController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(CategoryListController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void setReturn(String ret) {
+        backLobby.setOnAction(e -> {
+            try {
+                if (ret.equals(JavaFXMLApplication.GASTOSLISTA)) {
+                    ChargeListController c = null;
+                    c = JavaFXMLApplication.cambiarVentana(ret).getController();
+                    c.update();
+                } else {
+                    LobbyController c = null;
+                    c = JavaFXMLApplication.cambiarVentana(ret).getController();
+                    c.update();
+                }
+            } catch ( IOException ex) {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
     
 }

@@ -62,7 +62,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import static javafx.scene.paint.Color.WHITE;
+import static javafx.scene.paint.Color.*;
 import model.Category;
 
 /**
@@ -166,6 +166,7 @@ public class LobbyController implements Initializable {
     private void entrarPerfil(MouseEvent event) throws IOException {
         try {
             JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPALPERFIL);
+            
         }
         catch (IOException ex) {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
@@ -234,7 +235,12 @@ public class LobbyController implements Initializable {
             }
             j = 9;
             for(Category x : l2){
+
                 if(j > 0){
+                    // Reset all the views
+                    categoryListNames[9 - j].setStyle("-fx-text-fill: BLACK; -fx-font-size: 21px");
+                    flechas[9 - j].setFill(BLACK);
+                    paneCat[9 - j].setStyle("-fx-background-color: #fefefe; -fx-cursor: hand; -fx-border-color: grey; -fx-border-width: 0.5px;");
                     categoryListNames[9 - j].setText(x.getName());
                     paneCat[9 - j].setVisible(true);
                     paneCat[9 - j].setOnMouseClicked((e) -> {
@@ -254,10 +260,18 @@ public class LobbyController implements Initializable {
             //Show add category button
             System.out.println(j);
             categoryListNames[9 - j].setText("Añadir categorías");
-            categoryListNames[9 - j].setStyle("-fx-text-fill: WHITE; -fx-font-size: 16pt");
+            categoryListNames[9 - j].setStyle("-fx-text-fill: WHITE; -fx-font-size: 21px");
             flechas[9 - j].setFill(WHITE);
             paneCat[9 - j].setStyle("-fx-background-color: #e85a9d; -fx-cursor: hand");
             paneCat[9 - j].setVisible(true);
+            paneCat[9 - j].setOnMouseClicked((e) -> {
+                try {
+                    JavaFXMLApplication.mostrarVentana(JavaFXMLApplication.ADDCATEGORIA);
+                    update();
+                } catch (IOException ex) {
+                    Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
             
             //pie chart
             
@@ -310,8 +324,10 @@ public class LobbyController implements Initializable {
     private void anadirGastos(MouseEvent event) throws AcountDAOException {
         try {
             acc = Acount.getInstance();
-            if (acc.getUserCategories() != null){
-                JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.ADDCHARGE);
+            if (acc.getUserCategories().isEmpty() == false) {
+                AddChargeController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.ADDCHARGE).getController();
+                c.update();
+                c.setReturn(JavaFXMLApplication.PRINCIPAL);
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Advertencia");
@@ -326,11 +342,14 @@ public class LobbyController implements Initializable {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 
     @FXML
     private void historialCategrorias(ActionEvent event) {
         try {
-            JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.CATEGORIALISTA);
+            CategoryListController c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.CATEGORIALISTA).getController();
+            c.setReturn(JavaFXMLApplication.PRINCIPAL);
+            c.update();
         }
         catch (IOException ex) {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
