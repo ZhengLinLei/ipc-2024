@@ -246,17 +246,17 @@ public class LobbyController implements Initializable {
             for(j = 0; j < 9; j++){
                 paneCat[j].setVisible(false);
             }
-            j = 9;
+            j = 8;
             for(Category x : l2){
 
                 if(j > 0){
                     // Reset all the views
-                    categoryListNames[9 - j].setStyle("-fx-text-fill: BLACK; -fx-font-size: 21px");
-                    flechas[9 - j].setFill(BLACK);
-                    paneCat[9 - j].setStyle("-fx-background-color: #fefefe; -fx-cursor: hand; -fx-border-color: grey; -fx-border-width: 0.5px;");
-                    categoryListNames[9 - j].setText(x.getName());
-                    paneCat[9 - j].setVisible(true);
-                    paneCat[9 - j].setOnMouseClicked((e) -> {
+                    categoryListNames[8 - j].setStyle("-fx-text-fill: BLACK; -fx-font-size: 21px");
+                    flechas[8 - j].setFill(BLACK);
+                    paneCat[8 - j].setStyle("-fx-background-color: #fefefe; -fx-cursor: hand; -fx-border-color: grey; -fx-border-width: 0.5px;");
+                    categoryListNames[8 - j].setText(x.getName());
+                    paneCat[8 - j].setVisible(true);
+                    paneCat[8 - j].setOnMouseClicked((e) -> {
                     CategoryInfoController catCtrl;
                         try {
                             catCtrl = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.CATEGORIAINFO).getController();
@@ -267,17 +267,17 @@ public class LobbyController implements Initializable {
                         }
                     
                     });
+                    j--;
                 }
-                j--;
             }
             //Show add category button
             System.out.println(j);
-            categoryListNames[9 - j].setText("Añadir categorías");
-            categoryListNames[9 - j].setStyle("-fx-text-fill: WHITE; -fx-font-size: 21px");
-            flechas[9 - j].setFill(WHITE);
-            paneCat[9 - j].setStyle("-fx-background-color: #e85a9d; -fx-cursor: hand");
-            paneCat[9 - j].setVisible(true);
-            paneCat[9 - j].setOnMouseClicked((e) -> {
+            categoryListNames[8 - j].setText("Añadir categorías");
+            categoryListNames[8 - j].setStyle("-fx-text-fill: WHITE; -fx-font-size: 21px");
+            flechas[8 - j].setFill(WHITE);
+            paneCat[8 - j].setStyle("-fx-background-color: #e85a9d; -fx-cursor: hand");
+            paneCat[8 - j].setVisible(true);
+            paneCat[8 - j].setOnMouseClicked((e) -> {
                 try {
                     JavaFXMLApplication.mostrarVentana(JavaFXMLApplication.ADDCATEGORIA);
                     update();
