@@ -84,7 +84,7 @@ public class ProfileController implements Initializable {
         // Add action to the button
         backLobby.setOnAction(e -> {
             try {
-                JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL);
+                JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL, true);
             } catch ( IOException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }

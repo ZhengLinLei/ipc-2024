@@ -105,6 +105,8 @@ public class LobbyController implements Initializable {
     private FontAwesomeIconView flecha1, flecha2, flecha3, flecha4, flecha5, flecha6, flecha7, flecha8, flecha9;
     @FXML
     private Button verHistorialCategorias;
+    @FXML
+    private Button btn1, btn2, btn3;
     /**
      * Initializes the controller class.
      */
@@ -184,6 +186,7 @@ public class LobbyController implements Initializable {
         Label[] amounts = {a1, a2, a3};
         Label[] categoryListNames = {cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9};
         Pane[] pane = {btnC1, btnC2, btnC3};
+        Button[] btn = {btn1, btn2, btn3};
         Pane[] paneCat = {paneCat1,paneCat2,paneCat3,paneCat4,paneCat5,paneCat6,paneCat7,paneCat8,paneCat9};
         FontAwesomeIconView[] flechas = {flecha1,flecha2,flecha3,flecha4,flecha5,flecha6,flecha7,flecha8,flecha9};
         btnC1.setVisible(false);
@@ -209,6 +212,16 @@ public class LobbyController implements Initializable {
                     amounts[3 - i].setText(String.format("%.2f", c.getCost()) + " €");
                     pane[3 - i].setVisible(true);
                     pane[3 - i].setOnMouseClicked((e) -> {
+                        try {
+                            ChargeInfoController ch = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.GASTOSINFO).getController();
+                            ch.setReturn(JavaFXMLApplication.PRINCIPAL);
+                            ch.setCharge(c);
+                            System.out.println("Charge: " + c.getName());
+                        } catch (IOException ex) {
+                            Logger.getLogger(ChargeListController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    });
+                    btn[3 - i].setOnMouseClicked((e) -> {
                         try {
                             ChargeInfoController ch = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.GASTOSINFO).getController();
                             ch.setReturn(JavaFXMLApplication.PRINCIPAL);
@@ -335,6 +348,7 @@ public class LobbyController implements Initializable {
                 alert.setContentText("Crea una categoría si desea añadir un gasto");
                 alert.showAndWait();
                 JavaFXMLApplication.mostrarVentana(JavaFXMLApplication.ADDCATEGORIA);
+                update();
             }
 
         }

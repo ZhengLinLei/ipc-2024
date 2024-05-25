@@ -31,6 +31,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Category;
 
+// Sqlite
+import org.sqlite.SQLiteDataSource;
+import java.sql.Connection;
+
 /**
  * FXML Controller class
  *
@@ -60,6 +64,7 @@ public class CategoryInfoController implements Initializable {
     private Button deleteBtn;
 
     private Category category;
+    private List<Charge> chargesTmp = new java.util.ArrayList<>();
     private User user;
     final ObservableList<MyChargeModel> data = FXCollections.observableArrayList();
 
@@ -72,7 +77,7 @@ public class CategoryInfoController implements Initializable {
         // Add action to the button
         backLobby.setOnAction(e -> {
             try {
-                JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL);
+                JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL, true);
             } catch ( IOException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -124,9 +129,23 @@ public class CategoryInfoController implements Initializable {
             category.setDescription(categoryDescription.getText());
             try {
                 Acount acc = Acount.getInstance();
+
+
+                // NO HAY FUNCION PARA MODIFICAR CATEGORIA!!!!!!! en Acount.class
+                // Obtener todas los charge de la categoria
+                List<Charge> charges = acc.getUserCharges();
+                for (Charge charge : charges) {
+                    if (charge.getCategory().getName().equals(category.getName())) {
+                        chargesTmp.add(charge);
+                    }
+                }
                 acc.removeCategory(category);
 
                 acc.registerCategory(category.getName(), category.getDescription());
+                // Recreate all charges
+                for (Charge charge : chargesTmp) {
+                    acc.registerCharge(charge.getName(), charge.getDescription(), charge.getCost(), charge.getUnits(), charge.getImageScan(), charge.getDate(), category);
+                }
             } catch (AcountDAOException ex) {
                 Logger.getLogger(CategoryInfoController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
@@ -275,7 +294,7 @@ public class CategoryInfoController implements Initializable {
                     c.update();
                 } else {
                     LobbyController c = null;
-                    c = JavaFXMLApplication.cambiarVentana(ret).getController();
+                    c = JavaFXMLApplication.cambiarVentana(ret, true).getController();
                     c.update();
                 }
             } catch ( IOException ex) {
