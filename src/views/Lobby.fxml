@@ -21,7 +21,7 @@
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e85a9d;" BorderPane.alignment="CENTER">
          <children>
-            <GridPane alignment="CENTER" prefHeight="66.0" prefWidth="800.0">
+            <GridPane alignment="CENTER" prefHeight="66.0" prefWidth="800.0" HBox.hgrow="ALWAYS">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -75,13 +75,13 @@
       <Pane prefHeight="700.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="TOP_CENTER">
          <content>
-            <VBox prefHeight="965.0" prefWidth="784.0">
+            <VBox alignment="TOP_CENTER" prefHeight="965.0" prefWidth="784.0">
                <children>
                   <HBox prefHeight="473.0" prefWidth="784.0">
                      <children>
-                        <GridPane prefHeight="473.0" prefWidth="789.0">
+                        <GridPane prefHeight="473.0" prefWidth="789.0" HBox.hgrow="ALWAYS">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="459.9189147949219" minWidth="10.0" prefWidth="459.9189147949219" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.2081298828125" minWidth="10.0" prefWidth="324.0810852050781" />
@@ -90,7 +90,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                                  <GridPane.margin>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </GridPane.margin>
@@ -154,7 +154,7 @@
                                                             <Font name="Arial Hebrew Bold" size="24.0" />
                                                          </font>
                                                       </Label>
-                                                      <Button layoutX="231.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                                                      <Button fx:id="btn1" layoutX="231.0" layoutY="11.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;">
                                                          <graphic>
                                                             <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="32" />
                                                          </graphic>
@@ -182,7 +182,7 @@
                                                             <Font name="Arial Hebrew Bold" size="24.0" />
                                                          </font>
                                                       </Label>
-                                                      <Button layoutX="231.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                                                      <Button fx:id="btn2" layoutX="231.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;">
                                                          <graphic>
                                                             <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="32" />
                                                          </graphic>
@@ -210,7 +210,7 @@
                                                             <Font name="Arial Hebrew Bold" size="24.0" />
                                                          </font>
                                                       </Label>
-                                                      <Button layoutX="231.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                                                      <Button fx:id="btn3" layoutX="231.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;">
                                                          <graphic>
                                                             <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="32" />
                                                          </graphic>
@@ -243,9 +243,9 @@
                         </GridPane>
                      </children>
                   </HBox>
-                  <HBox prefHeight="401.0" prefWidth="784.0">
+                  <HBox prefHeight="401.0" prefWidth="784.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Pane prefHeight="401.0" prefWidth="799.0" style="-fx-background-color: #fff;">
+                        <Pane prefHeight="361.0" prefWidth="721.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets bottom="20.0" left="20.0" right="20.0" />
                            </HBox.margin>

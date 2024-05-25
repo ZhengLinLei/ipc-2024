@@ -147,7 +147,7 @@ public class AddChargeController implements Initializable {
         }
         try {
             clearAll();
-            JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL);
+            JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL, true);
         }
         catch (IOException ex) {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
@@ -188,7 +188,7 @@ public class AddChargeController implements Initializable {
                     c.update();
                 } else {
                     LobbyController c = null;
-                    c = JavaFXMLApplication.cambiarVentana(ret).getController();
+                    c = JavaFXMLApplication.cambiarVentana(ret, true).getController();
                     c.update();
                 }
             } catch ( IOException ex) {

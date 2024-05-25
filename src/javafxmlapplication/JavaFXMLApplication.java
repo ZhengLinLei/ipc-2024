@@ -140,6 +140,7 @@ public class JavaFXMLApplication extends Application {
      */
     public static FXMLLoader cambiarVentana(String nombre) throws IOException{
         stage.setResizable(false);
+        redimensionar(800, 800);
 
         //Obtener loader
         Parent root;

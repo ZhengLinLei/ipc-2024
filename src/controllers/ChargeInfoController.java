@@ -71,7 +71,7 @@ public class ChargeInfoController implements Initializable {
         // Add action to the button
         backLobby.setOnAction(e -> {
             try {
-                JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL);
+                JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL, true);
             } catch ( IOException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -172,7 +172,7 @@ public class ChargeInfoController implements Initializable {
                     c.update();
                 } else {
                     LobbyController c = null;
-                    c = JavaFXMLApplication.cambiarVentana(ret).getController();
+                    c = JavaFXMLApplication.cambiarVentana(ret, true).getController();
                     c.update();
                 }
             } catch ( IOException ex) {
