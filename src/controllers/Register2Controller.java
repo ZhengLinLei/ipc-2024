@@ -134,6 +134,7 @@ public class Register2Controller implements Initializable {
             if (selectedFile != null) {
                 Image image = new Image(selectedFile.toURI().toString());
                 selectImg.setImage(image);
+                img = image;
             }
         });
 
