@@ -6,6 +6,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,6 +60,9 @@ public class ChargeInfoController implements Initializable {
     @FXML
     private Button deleteBtn;
 
+    private Category catTmp;
+    private Acount acc = null;
+
 
     private Boolean edit = false;
 
@@ -78,7 +82,6 @@ public class ChargeInfoController implements Initializable {
         });
 
         // ChoiceBox add all categories
-        Acount acc = null;
         try {
             acc = Acount.getInstance();
             List<Category> categories = acc.getUserCategories();
@@ -103,33 +106,46 @@ public class ChargeInfoController implements Initializable {
 
 
         // comfirm on click
-        // modifyBtn.setOnMouseClicked(e -> {
-        //     if (edit) {
-        //         // Save the data
-        //         try {
-        //             charge.setName(chargeName.getText());
-        //             charge.setCost(Double.parseDouble(chargeCost.getText()));
-        //             charge.setUnits(Integer.parseInt(chargeAmount.getText()));
-        //             charge.setDescription(chargeDescription.getText());
-        //             charge.setDate(chargeDate.getValue());
-        //             charge.setCategory(new Category(chargeCategoryName.getValue()));
-        //             acc.updateCharge(charge);
-        //         } catch (AcountDAOException ex) {
-        //             Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
-        //         }
+        modifyBtn.setOnMouseClicked(e -> {
+            if (edit) {
+                // Save the data
+                try {
+                    // Get all categories
+                    List<Category> l = acc.getUserCategories();
+                    for(Category c : l) {
+                        if (c.getName().equals(chargeCategoryName.getValue())) {
+                            catTmp = c;
+                        }
+                    }
 
-        //         // Remove the edit
-        //         cancelEdit();
-        //         // // Save the data
-        //         // try {
-        //         //     acc.updateUser(user);
-        //         // } catch (AcountDAOException ex) {
-        //         //     Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
-        //         // }
-        //     } else {
-        //         activeEdit();
-        //     }
-        // });
+                    // Remove this
+                    acc.removeCharge(charge);
+
+                    // Register the new one
+                    acc.registerCharge(
+                            chargeName.getText(), 
+                            chargeDescription.getText(),
+                            Double.parseDouble(chargeCost.getText()), 
+                            Integer.parseInt(chargeAmount.getText()), 
+                            chargeImage.getImage(),
+                            chargeDate.getValue(), catTmp);
+
+                } catch (AcountDAOException ex) {
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                // Remove the edit
+                cancelEdit();
+                // // Save the data
+                // try {
+                //     acc.updateUser(user);
+                // } catch (AcountDAOException ex) {
+                //     Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+                // }
+            } else {
+                activeEdit();
+            }
+        });
 
         // Delete on click
         deleteBtn.setOnMouseClicked(e -> {
@@ -148,6 +164,28 @@ public class ChargeInfoController implements Initializable {
                 }
             });
         });
+    }
+
+    private void activeEdit() {
+        edit = true;
+        modifyBtn.setText("Guardar");
+        chargeName.setEditable(true);
+        chargeCost.setEditable(true);
+        chargeAmount.setEditable(true);
+        chargeDescription.setEditable(true);
+        chargeDate.setEditable(true);
+        chargeCategoryName.setDisable(false);
+    }
+
+    private void cancelEdit() {
+        edit = false;
+        modifyBtn.setText("Modificar");
+        chargeName.setEditable(false);
+        chargeCost.setEditable(false);
+        chargeAmount.setEditable(false);
+        chargeDescription.setEditable(false);
+        chargeDate.setEditable(false);
+        chargeCategoryName.setDisable(true);
     }
     
     public void setCharge(Charge charge) {

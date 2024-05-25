@@ -51,6 +51,10 @@ public class ProfileController implements Initializable {
     private Button modifyBtn;
     @FXML
     private Label userTitle;
+    @FXML
+    private Button logout;
+    
+    private Acount acc = null;
 
     /**
      * Initializes the controller class.
@@ -58,7 +62,6 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Get user info
-        Acount acc = null;
         try {
             acc = Acount.getInstance();
             this.user = acc.getLoggedUser();
@@ -109,6 +112,16 @@ public class ProfileController implements Initializable {
                 // }
             } else {
                 activeEdit();
+            }
+        });
+
+        logout.setOnMouseClicked(e -> {
+            try {
+                acc.logOutUser();
+                JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.INICIOSESION);
+            }
+            catch (IOException ex) {
+                Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
 
