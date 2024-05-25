@@ -138,6 +138,11 @@
                               </HBox>
                            </children>
                         </VBox>
+                        <Button fx:id="logout" layoutX="592.0" layoutY="30.0" mnemonicParsing="false" text=" Cerrar sesión">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="POWER_OFF" />
+                           </graphic>
+                        </Button>
                      </children>
                   </Pane>
                </children>
