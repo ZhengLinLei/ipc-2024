@@ -3,5 +3,9 @@
 
 
 
-https://github.com/ZhengLinLei/ipc-2024/VideoPresentacion.mov
+
+
+
+https://github.com/ZhengLinLei/ipc-2024/assets/77938581/3d610732-bad4-4986-b677-17b5a0231e11
+
 
