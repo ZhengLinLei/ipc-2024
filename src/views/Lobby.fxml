@@ -2,6 +2,9 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -42,12 +45,12 @@
                   </Pane>
                   <Pane prefHeight="83.0" prefWidth="267.0">
                      <children>
-                        <Label layoutX="41.0" layoutY="39.0" text="Hola," textFill="WHITE">
+                        <Label layoutX="41.0" layoutY="39.0" text="Hola, " textFill="WHITE">
                            <font>
                               <Font name="Arial Hebrew Bold" size="22.0" />
                            </font>
                         </Label>
-                        <Label fx:id="userName" layoutX="94.0" layoutY="39.0" prefHeight="31.0" prefWidth="164.0" text="ZLL" textFill="WHITE">
+                        <Label fx:id="userName" layoutX="100.0" layoutY="39.0" prefHeight="31.0" prefWidth="164.0" text="ZLL" textFill="WHITE">
                            <font>
                               <Font name="Arial Hebrew Bold" size="22.0" />
                            </font>
@@ -77,11 +80,11 @@
    <center>
       <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="TOP_CENTER">
          <content>
-            <VBox alignment="TOP_CENTER" prefHeight="965.0" prefWidth="784.0">
+            <VBox alignment="TOP_CENTER" prefHeight="1442.0" prefWidth="784.0">
                <children>
-                  <HBox prefHeight="473.0" prefWidth="784.0">
+                  <HBox prefHeight="469.0" prefWidth="784.0">
                      <children>
-                        <GridPane prefHeight="473.0" prefWidth="789.0" HBox.hgrow="ALWAYS">
+                        <GridPane prefHeight="479.0" prefWidth="784.0" HBox.hgrow="ALWAYS">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="459.9189147949219" minWidth="10.0" prefWidth="459.9189147949219" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.2081298828125" minWidth="10.0" prefWidth="324.0810852050781" />
@@ -90,7 +93,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                              <Pane prefHeight="403.0" prefWidth="399.0" style="-fx-background-color: #fff;" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                                  <GridPane.margin>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </GridPane.margin>
@@ -243,11 +246,66 @@
                         </GridPane>
                      </children>
                   </HBox>
-                  <HBox prefHeight="401.0" prefWidth="784.0" VBox.vgrow="ALWAYS">
+                  <HBox prefHeight="397.0" prefWidth="784.0">
+                     <children>
+                        <Pane prefHeight="232.0" prefWidth="724.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="20.0" left="20.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label layoutX="15.0" layoutY="13.0" text="Salud financiera">
+                                 <font>
+                                    <Font name="Arial Hebrew" size="18.0" />
+                                 </font>
+                              </Label>
+                              <BarChart fx:id="progressBarChart" layoutX="27.0" layoutY="58.0" prefHeight="279.0" prefWidth="483.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </BarChart>
+                              <Label layoutX="563.0" layoutY="86.0" prefHeight="24.0" prefWidth="109.0" text="Comparación de">
+                                 <font>
+                                    <Font name="Arial Hebrew" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="593.0" layoutY="100.0" prefHeight="24.0" prefWidth="57.0" text="gastos">
+                                 <font>
+                                    <Font name="Arial Hebrew" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="541.0" layoutY="253.0" prefHeight="27.0" prefWidth="160.0" text="Respecto del mes pasado" textOverrun="CLIP">
+                                 <font>
+                                    <Font name="Arial Hebrew" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="percentajeMonth" alignment="CENTER" contentDisplay="CENTER" layoutX="560.0" layoutY="150.0" prefHeight="39.0" prefWidth="111.0" text="-23%" textFill="#64ff5e">
+                                 <font>
+                                    <Font name="Arial Hebrew Bold" size="28.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="absMonth" alignment="CENTER" layoutX="575.0" layoutY="181.0" prefHeight="39.0" prefWidth="86.0" text="-10.30€">
+                                 <font>
+                                    <Font name="Arial Hebrew Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets top="10.0" />
+                           </opaqueInsets>
+                        </Pane>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="525.0" prefWidth="784.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Pane prefHeight="361.0" prefWidth="721.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
                            <HBox.margin>
-                              <Insets bottom="20.0" left="20.0" right="20.0" />
+                              <Insets bottom="20.0" left="20.0" />
                            </HBox.margin>
                            <children>
                               <Button fx:id="verHistorialCategorias" layoutX="571.0" layoutY="14.0" mnemonicParsing="false" onAction="#historialCategrorias" prefHeight="38.0" prefWidth="119.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-width: 0.5; -fx-border-color: grey;" text="  Ver lista">

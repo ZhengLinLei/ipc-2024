@@ -57,6 +57,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.event.ActionEvent;
+import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
@@ -77,6 +78,8 @@ public class LobbyController implements Initializable {
     private User user;
     private Acount acc;
     private float totalGastosInt;
+    private float[] monthGastos = new float[3];
+    private String[] monthName = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
     @FXML
     private Label userName;
     @FXML
@@ -107,6 +110,12 @@ public class LobbyController implements Initializable {
     private Button verHistorialCategorias;
     @FXML
     private Button btn1, btn2, btn3;
+    @FXML
+    private BarChart<String, Float> progressBarChart;
+    @FXML
+    private Label percentajeMonth;
+    @FXML
+    private Label absMonth;
     /**
      * Initializes the controller class.
      */
@@ -177,6 +186,7 @@ public class LobbyController implements Initializable {
     
     
     public void update() {
+        monthGastos = new float[3];
         // Reset pie chart
         idPieChart.getData().clear();
 
@@ -205,6 +215,16 @@ public class LobbyController implements Initializable {
             // Map with the category and the total amount of money
             java.util.Map<String, Double> map = new java.util.HashMap<>();
             for (Charge c : l) {
+                // Get las 3 month chage total
+                if (c.getDate().getMonthValue() == java.time.LocalDate.now().getMonthValue()) {
+                    monthGastos[0] += c.getCost()*c.getUnits();
+                }
+                else if (c.getDate().getMonthValue() == java.time.LocalDate.now().minusMonths(1).getMonthValue()) {
+                    monthGastos[1] += c.getCost()*c.getUnits();
+                }
+                else if (c.getDate().getMonthValue() == java.time.LocalDate.now().minusMonths(2).getMonthValue()) {
+                    monthGastos[2] += c.getCost()*c.getUnits();
+                }
                 // Show top 3 charges
                 if (i > 0) {
                     names[3 - i].setText(c.getName());
@@ -243,6 +263,36 @@ public class LobbyController implements Initializable {
                     map.put(cat, c.getCost());
                 }
             }
+            
+            // Set bar chart with the last 3 month charges
+            progressBarChart.getData().clear();
+            javafx.scene.chart.XYChart.Series<String, Float> series = new javafx.scene.chart.XYChart.Series<>();
+            // With month names getting month number
+            series.getData().add(new javafx.scene.chart.XYChart.Data<>(monthName[java.time.LocalDate.now().minusMonths(2).getMonthValue() - 1], monthGastos[2]));
+            series.getData().add(new javafx.scene.chart.XYChart.Data<>(monthName[java.time.LocalDate.now().minusMonths(1).getMonthValue() - 1], monthGastos[1]));
+            series.getData().add(new javafx.scene.chart.XYChart.Data<>(monthName[java.time.LocalDate.now().getMonthValue() - 1], monthGastos[0]));
+            // Set values
+            progressBarChart.getData().add(series);
+
+            // Set percentage from last month
+            float abs = (monthGastos[0] - monthGastos[1]);
+            float percent = (abs == 0) ? 0 : ((monthGastos[1] == 0) ? 0 : abs / monthGastos[1] * 100);
+            System.out.println("Percent: " + percent);
+            percentajeMonth.setText(String.format("%.1f", (percent == 0) ? 0 : percent) + "%");
+            if (percent > 0) {
+                percentajeMonth.setStyle("-fx-text-fill: #00ff00");
+            }
+            else 
+            if (percent < 0){
+                percentajeMonth.setStyle("-fx-text-fill: #ff0000");
+            }
+            else {
+                percentajeMonth.setStyle("-fx-text-fill: #000000");
+            }
+
+            // Set absolute value from last month
+            absMonth.setText(((abs > 0) ? "+" : "") + String.format("%.2f", abs) + " €");
+
             for(j = 0; j < 9; j++){
                 paneCat[j].setVisible(false);
             }
