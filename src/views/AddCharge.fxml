@@ -21,7 +21,7 @@
          <children>
             <Pane prefHeight="63.0" prefWidth="813.0" style="-fx-background-color: #e85a9d;">
                <children>
-                  <Button fx:id="backLobby" mnemonicParsing="false" onAction="#goBack" prefHeight="68.0" prefWidth="112.0" style="-fx-background-color: transparent; -fx-cursor: hand;" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#goBack" prefHeight="68.0" prefWidth="112.0" style="-fx-background-color: transparent; -fx-cursor: hand;" textAlignment="CENTER">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="ARROW_LEFT" size="21" tabSize="4">
                            <font>
@@ -172,7 +172,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="127.0" prefWidth="805.0">
                <children>
-                  <Text fx:id="textoError" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Rellene todos los campos" visible="false">
+                  <Text fx:id="textoError" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Rellene todos los campos correctamente" visible="false">
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin>

@@ -147,7 +147,8 @@ public class AddChargeController implements Initializable {
         }
         try {
             clearAll();
-            JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL, true);
+            textoError.setVisible(false);
+            JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL);
         }
         catch (IOException ex) {
             Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
@@ -172,7 +173,11 @@ public class AddChargeController implements Initializable {
 
             // Alert
             JavaFXMLApplication.showAlert("Carga exitosa", "La carga se ha realizado con éxito", "Se ha registrado la carga correctamente", AlertType.INFORMATION);
+            LobbyController c = null;
+            c = JavaFXMLApplication.cambiarVentana(JavaFXMLApplication.PRINCIPAL, true).getController();
+            c.update();
             clearAll();
+            textoError.setVisible(false);
         }
         
     }
@@ -180,6 +185,7 @@ public class AddChargeController implements Initializable {
     public void setReturn(String ret) {
         update();
         clearAll();
+        textoError.setVisible(false);
         backLobby.setOnAction(e -> {
             try {
                 if (ret.equals(JavaFXMLApplication.GASTOSLISTA)) {
@@ -212,7 +218,6 @@ public class AddChargeController implements Initializable {
     private void addCategory(ActionEvent event) {
         try {
             JavaFXMLApplication.mostrarVentana(JavaFXMLApplication.ADDCATEGORIA);
-            
             update();
         }
         catch (IOException ex) {

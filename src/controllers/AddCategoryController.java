@@ -17,7 +17,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafxmlapplication.JavaFXMLApplication;
 import model.Acount;
 import model.AcountDAOException;
 import model.Category;
@@ -37,6 +39,8 @@ public class AddCategoryController implements Initializable {
     private Button addBtn;
     @FXML
     private Button cancelBtn;
+    @FXML
+    private Text textoError;
 
     /**
      * Initializes the controller class.
@@ -48,13 +52,19 @@ public class AddCategoryController implements Initializable {
 
     @FXML
     private void addCategory(ActionEvent event) throws AcountDAOException, IOException {
-        Acount acc = Acount.getInstance();
-        acc.registerCategory(nameTextField.getText(), descTextField.getText());
-        
-        nameTextField.clear();
-        descTextField.clear();
-        
-        close(event);
+        if (nameTextField.getText().trim().isEmpty() || descTextField.getText().trim().isEmpty()) {
+            textoError.setVisible(true);
+        }
+        else {
+            Acount acc = Acount.getInstance();
+            acc.registerCategory(nameTextField.getText(), descTextField.getText());
+
+            nameTextField.clear();
+            descTextField.clear();
+            textoError.setVisible(false);
+            
+            close(event);
+        }
     }
 
     @FXML
@@ -62,6 +72,7 @@ public class AddCategoryController implements Initializable {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
 
+        textoError.setVisible(false);
         stage.close();
     }
     
