@@ -30,23 +30,28 @@
             <Font size="22.0" />
          </font>
       </Text>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
          <children>
-            <FontAwesomeIconView fill="#e85a9d" glyphName="TAG" size="16" textAlignment="CENTER" wrappingWidth="10.627388954162598">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </FontAwesomeIconView>
-            <TextField fx:id="nameTextField" focusTraversable="false" prefHeight="36.0" prefWidth="217.0" promptText="Nombre">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </TextField>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <FontAwesomeIconView fill="#e85a9d" glyphName="TAG" size="16" textAlignment="CENTER" wrappingWidth="10.627388954162598">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <TextField fx:id="nameTextField" focusTraversable="false" prefHeight="36.0" prefWidth="217.0" promptText="Nombre">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <Text fx:id="textoErrorCategoria" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Esta categoría ya existe" textAlignment="RIGHT" visible="false" />
          </children>
-      </HBox>
+      </VBox>
       <HBox alignment="CENTER" prefHeight="153.0" prefWidth="297.0" GridPane.rowIndex="2">
          <children>
             <FontAwesomeIconView fill="#e85a9d" glyphName="FILE" size="16" textAlignment="CENTER" wrappingWidth="10.627388954162598">
