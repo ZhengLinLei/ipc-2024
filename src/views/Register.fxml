@@ -148,7 +148,7 @@
                   <Font name="Arial Hebrew Bold" size="16.0" />
                </font>
             </Button>
-            <Label id="error-label" fx:id="errorLabel" text="Label" textFill="RED">
+            <Label id="error-label" fx:id="errorLabel" text="" textFill="RED">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
