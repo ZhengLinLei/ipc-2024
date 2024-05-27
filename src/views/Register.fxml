@@ -58,12 +58,12 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </FontAwesomeIconView>
-                        <TextField id="signInNameIn" fx:id="signUpNameIn" prefHeight="43.0" prefWidth="158.0" promptText="Nombre" style="-fx-cursor: hand;" styleClass="input" stylesheets="@css/Register.css">
+                        <TextField id="signInNameIn" fx:id="signUpNameIn" prefHeight="43.0" prefWidth="158.0" promptText="Nombre" style="-fx-cursor: hand;" styleClass="input" >
                            <font>
                               <Font name="Arial Hebrew" size="16.0" />
                            </font>
                         </TextField>
-                        <TextField id="signInSurnameIn" fx:id="signUpSurnameIn" layoutX="155.0" layoutY="17.0" prefHeight="43.0" prefWidth="158.0" promptText="Apellidos" style="-fx-cursor: hand;" styleClass="input" stylesheets="@css/Register.css">
+                        <TextField id="signInSurnameIn" fx:id="signUpSurnameIn" layoutX="155.0" layoutY="17.0" prefHeight="43.0" prefWidth="158.0" promptText="Apellidos" style="-fx-cursor: hand;" styleClass="input" >
                            <font>
                               <Font name="Arial Hebrew" size="16.0" />
                            </font>
@@ -83,7 +83,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </FontAwesomeIconView>
-                        <TextField id="signInEmailIn" fx:id="signUpEmailIn" prefHeight="43.0" prefWidth="336.0" promptText="Email" style="-fx-cursor: hand;" styleClass="input" stylesheets="@css/Register.css">
+                        <TextField id="signInEmailIn" fx:id="signUpEmailIn" prefHeight="43.0" prefWidth="336.0" promptText="Email" style="-fx-cursor: hand;" styleClass="input" >
                            <font>
                               <Font name="Arial Hebrew" size="16.0" />
                            </font>
@@ -100,7 +100,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </FontAwesomeIconView>
-                        <TextField id="signInEmailIn" fx:id="signUpUserIn" prefHeight="43.0" prefWidth="336.0" promptText="Usuario" style="-fx-cursor: hand;" styleClass="input" stylesheets="@css/Register.css">
+                        <TextField id="signInEmailIn" fx:id="signUpUserIn" prefHeight="43.0" prefWidth="336.0" promptText="Usuario" style="-fx-cursor: hand;" styleClass="input" >
                            <font>
                               <Font name="Arial Hebrew" size="16.0" />
                            </font>
@@ -117,7 +117,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </FontAwesomeIconView>
-                        <PasswordField id="signInPassIn" fx:id="signUpPassIn" prefHeight="42.0" prefWidth="336.0" promptText="Contraseña" style="-fx-cursor: hand;" styleClass="input" stylesheets="@css/Register.css">
+                        <PasswordField id="signInPassIn" fx:id="signUpPassIn" prefHeight="42.0" prefWidth="336.0" promptText="Contraseña" style="-fx-cursor: hand;" styleClass="input" >
                            <font>
                               <Font name="Arial Hebrew" size="16.0" />
                            </font>
@@ -134,7 +134,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </FontAwesomeIconView>
-                        <PasswordField id="signInPassIn" fx:id="signUpRepassIn" prefHeight="42.0" prefWidth="336.0" promptText="Repita Contraseña" style="-fx-cursor: hand;" styleClass="input" stylesheets="@css/Register.css">
+                        <PasswordField id="signInPassIn" fx:id="signUpRepassIn" prefHeight="42.0" prefWidth="336.0" promptText="Repita Contraseña" style="-fx-cursor: hand;" styleClass="input" >
                            <font>
                               <Font name="Arial Hebrew" size="16.0" />
                            </font>
@@ -143,17 +143,17 @@
                   </HBox>
                </children>
             </VBox>
-            <Button id="signUpBtn" fx:id="signUpBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="372.0" style="-fx-background-color: #e85a9d; -fx-padding: 10px; -fx-cursor: hand;" stylesheets="@css/Register.css" text="Registrarse" textFill="WHITE">
+            <Button id="signUpBtn" fx:id="signUpBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="372.0" style="-fx-background-color: #e85a9d; -fx-padding: 10px; -fx-cursor: hand;"  text="Registrarse" textFill="WHITE">
                <font>
                   <Font name="Arial Hebrew Bold" size="16.0" />
                </font>
             </Button>
-            <Label id="error-label" fx:id="errorLabel" style="-fx-opacity: 0;" stylesheets="@css/Register.css" text="Label" textFill="RED">
+            <Label id="error-label" fx:id="errorLabel" text="Label" textFill="RED">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="86.0" prefWidth="137.0" style="-fx-padding: 30px 0 0 0;" stylesheets="@css/Login.css" text="¿Ya tienes cuenta?">
+            <Label prefHeight="86.0" prefWidth="137.0" style="-fx-padding: 30px 0 0 0;"  text="¿Ya tienes cuenta?">
                <font>
                   <Font name="Arial Hebrew" size="16.0" />
                </font>

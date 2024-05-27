@@ -153,10 +153,10 @@ public class Register2Controller implements Initializable {
     }
     
     private void hoverLoginBtn(MouseEvent event) {
-        signUpBtn.getStyleClass().add("hover");
+        signUpBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand; -fx-background-color: #e74b94;");
     }
     private void exitLoginBtn(MouseEvent event) {
-        signUpBtn.getStyleClass().remove("hover");
+        signUpBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand;");
     }
 
     // Get all image from resource/avatar

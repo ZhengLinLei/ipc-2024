@@ -114,9 +114,27 @@ public class LoginController implements Initializable {
         String p = signInPassIn.getText();
         
         // Quitar clase error
-        signInEmailIn.getStyleClass().remove("error");
-        signInPassIn.getStyleClass().remove("error");
-        errorLabel.getStyleClass().remove("error");
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! El CSS no va en polilabs
+        // #signInBtn {
+        //     -fx-padding: 10px;
+        // }
+        // #signInBtn.hover {
+        //     -fx-background-color: #e74b94 !important;
+        // }
+        
+        // #signInPassIn.error {
+        //     -fx-border-color: red;
+        // }
+        // #signInEmailIn.error {
+        //     -fx-border-color: red;
+        // }
+        
+        // #error-label.error {
+        //     -fx-opacity: 1 !important;
+        // }
+        signInEmailIn.setStyle("-fx-cursor: hand;");
+        signInPassIn.setStyle("-fx-cursor: hand;");
+        errorLabel.setText("");
 
         // Debug values
         Logger.getLogger(LoginController.class.getName()).log(Level.INFO, "Email: " + u);
@@ -139,10 +157,10 @@ public class LoginController implements Initializable {
             }
         } else {
             if (u == null || u.equals("")) {
-                signInEmailIn.getStyleClass().add("error");
+                signInEmailIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
             }
             if (p == null || p.equals("")) {
-                signInPassIn.getStyleClass().add("error");
+                signInPassIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
             }
             
             return;
@@ -161,17 +179,17 @@ public class LoginController implements Initializable {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            errorLabel.getStyleClass().add("error");
+            errorLabel.setText("Usuario o contraseña incorrectos");
         }
     }
     void setNewUser(String username) {
         signInEmailIn.setText(username);
     }
     private void hoverLoginBtn(MouseEvent event) {
-        signInBtn.getStyleClass().add("hover");
+        signInBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand; -fx-background-color: #e74b94;");
     }
     private void exitLoginBtn(MouseEvent event) {
-        signInBtn.getStyleClass().remove("hover");
+        signInBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand;");
     }
     
     private void windowKeyEnter(KeyEvent event) throws IOException {
@@ -180,9 +198,10 @@ public class LoginController implements Initializable {
         }
     }
     private void clear() {
-        signInEmailIn.getStyleClass().remove("error");
-        signInPassIn.getStyleClass().remove("error");
-        errorLabel.getStyleClass().remove("error");
+        // Remove all error classes
+        signInEmailIn.setStyle("-fx-cursor: hand;");
+        signInPassIn.setStyle("-fx-cursor: hand;");
+        errorLabel.setText("");
         // Remove all input values
         signInEmailIn.setText("");
         signInPassIn.setText("");

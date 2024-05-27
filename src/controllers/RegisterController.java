@@ -124,52 +124,48 @@ public class RegisterController implements Initializable {
         String rp = signUpRepassIn.getText();
 
         // Remove styles
-        errorLabel.getStyleClass().remove("error");
-        signUpNameIn.getStyleClass().remove("error");
-        signUpSurnameIn.getStyleClass().remove("error");
-        signUpUserIn.getStyleClass().remove("error");
-        signUpEmailIn.getStyleClass().remove("error");
-        signUpPassIn.getStyleClass().remove("error");
-        signUpRepassIn.getStyleClass().remove("error");
+        errorLabel.setText("");
+        signUpEmailIn.setStyle("-fx-curso: hand;");
+        signUpNameIn.setStyle("-fx-curso: hand;");
+        signUpSurnameIn.setStyle("-fx-curso: hand;");
+        signUpUserIn.setStyle("-fx-curso: hand;");
+        signUpPassIn.setStyle("-fx-curso: hand;");
+        signUpRepassIn.setStyle("-fx-curso: hand;");
 
         // Comprobar que los campos no estén vacíos
         if (n.isEmpty() || s.isEmpty() || u.isEmpty() || e.isEmpty() || p.isEmpty() || rp.isEmpty()) {
             System.out.println("Vacios");
-            if (n.isEmpty()) signUpNameIn.getStyleClass().add("error");
-            if (s.isEmpty()) signUpSurnameIn.getStyleClass().add("error");
-            if (u.isEmpty()) signUpUserIn.getStyleClass().add("error");
-            if (e.isEmpty()) signUpEmailIn.getStyleClass().add("error");
-            if (p.isEmpty()) signUpPassIn.getStyleClass().add("error");
-            if (rp.isEmpty()) signUpRepassIn.getStyleClass().add("error");
+            if (n.isEmpty()) signUpNameIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
+            if (s.isEmpty()) signUpSurnameIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
+            if (u.isEmpty()) signUpUserIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
+            if (e.isEmpty()) signUpEmailIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
+            if (p.isEmpty()) signUpPassIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
+            if (rp.isEmpty()) signUpRepassIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
 
             errorLabel.setText("Rellene todos los campos");
-            errorLabel.getStyleClass().add("error");
             return;
         }
 
         // Comprobar que email es correcto
         if (!e.contains("@") || !e.contains(".")) {
             errorLabel.setText("Email no válido");
-            errorLabel.getStyleClass().add("error");
-            signUpEmailIn.getStyleClass().add("error");
+            signUpEmailIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
             return;
         }
 
         // Comprobar que las contraseñas coinciden
         if (!p.equals(rp)) {
             errorLabel.setText("Las contraseñas no coinciden");
-            errorLabel.getStyleClass().add("error");
-            signUpPassIn.getStyleClass().add("error");
-            signUpRepassIn.getStyleClass().add("error");
+            signUpPassIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
+            signUpRepassIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
             return;
         }
 
         // Tienen que tener más de 6 caracteres
         if (p.length() < 6) {
             errorLabel.setText("La contraseña debe tener más de 6 caracteres");
-            errorLabel.getStyleClass().add("error");
-            signUpPassIn.getStyleClass().add("error");
-            signUpRepassIn.getStyleClass().add("error");
+            signInPassIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
+            signUpRepassIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
             return;
         }
 
@@ -181,8 +177,7 @@ public class RegisterController implements Initializable {
             // If exist
             if (acc.existsLogin(u)) {
                 errorLabel.setText("El usuario ya existe");
-                errorLabel.getStyleClass().add("error");
-                signUpUserIn.getStyleClass().add("error");
+                signUpUserIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
                 return;
             }
 
@@ -202,10 +197,10 @@ public class RegisterController implements Initializable {
         }
     }
     private void hoverLoginBtn(MouseEvent event) {
-        signUpBtn.getStyleClass().add("hover");
+        signUpBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand; -fx-background-color: #e74b94;");
     }
     private void exitLoginBtn(MouseEvent event) {
-        signUpBtn.getStyleClass().remove("hover");
+        signUpBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand;");
     }
     private void windowKeyEnter(KeyEvent event) throws IOException {
         if(event.getCode() == KeyCode.ENTER){
@@ -214,13 +209,14 @@ public class RegisterController implements Initializable {
     }
 
     private void clear() {
-        signUpNameIn.getStyleClass().remove("error");
-        signUpSurnameIn.getStyleClass().remove("error");
-        signUpUserIn.getStyleClass().remove("error");
-        signUpEmailIn.getStyleClass().remove("error");
-        signUpPassIn.getStyleClass().remove("error");
-        signUpRepassIn.getStyleClass().remove("error");
-        errorLabel.getStyleClass().remove("error");
+        // Remove all error styles
+        signUpEmailIn.setStyle("-fx-cursor: hand;");
+        signUpPassIn.setStyle("-fx-cursor: hand;");
+        signUpRepassIn.setStyle("-fx-cursor: hand;");
+        signUpNameIn.setStyle("-fx-cursor: hand;");
+        signUpSurnameIn.setStyle("-fx-cursor: hand;");
+        signUpUserIn.setStyle("-fx-cursor: hand;");
+        errorLabel.setText("");
         // Remove all input values
         signUpNameIn.setText("");
         signUpSurnameIn.setText("");

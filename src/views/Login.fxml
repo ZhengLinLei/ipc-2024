@@ -58,7 +58,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </FontAwesomeIconView>
-                        <TextField id="signInEmailIn" fx:id="signInEmailIn" prefHeight="43.0" prefWidth="336.0" promptText="Usuario" style="-fx-cursor: hand;" stylesheets="@css/Login.css">
+                        <TextField id="signInEmailIn" fx:id="signInEmailIn" prefHeight="43.0" prefWidth="336.0" promptText="Usuario" style="-fx-cursor: hand;" >
                            <font>
                               <Font name="Arial Hebrew" size="16.0" />
                            </font>
@@ -75,7 +75,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </FontAwesomeIconView>
-                        <PasswordField id="signInPassIn" fx:id="signInPassIn" prefHeight="42.0" prefWidth="336.0" promptText="Contraseña" style="-fx-cursor: hand;" stylesheets="@css/Login.css">
+                        <PasswordField id="signInPassIn" fx:id="signInPassIn" prefHeight="42.0" prefWidth="336.0" promptText="Contraseña" style="-fx-cursor: hand;" >
                            <font>
                               <Font name="Arial Hebrew" size="16.0" />
                            </font>
@@ -84,17 +84,17 @@
                   </HBox>
                </children>
             </VBox>
-            <Button id="signInBtn" fx:id="signInBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="372.0" style="-fx-padding: 10px; -fx-background-color: #e85a9d; -fx-cursor: hand;" stylesheets="@css/Login.css" text="Iniciar sesión" textFill="WHITE">
+            <Button id="signInBtn" fx:id="signInBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="372.0" style="-fx-padding: 10px; -fx-background-color: #e85a9d; -fx-cursor: hand;"  text="Iniciar sesión" textFill="WHITE">
                <font>
                   <Font name="Arial Hebrew Bold" size="16.0" />
                </font>
             </Button>
-            <Label id="error-label" fx:id="errorLabel" style="-fx-opacity: 0;" stylesheets="@css/Login.css" text="Usuario o contraseña incorrecta" textFill="#f23232">
+            <Label id="error-label" fx:id="errorLabel" text="" textFill="#f23232">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="86.0" prefWidth="137.0" style="-fx-padding: 20px 0 0 0;" stylesheets="@css/Login.css" text="¿No tienes cuenta?">
+            <Label prefHeight="86.0" prefWidth="137.0" style="-fx-padding: 20px 0 0 0;"  text="¿No tienes cuenta?">
                <font>
                   <Font name="Arial Hebrew" size="16.0" />
                </font>
