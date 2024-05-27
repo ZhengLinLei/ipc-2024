@@ -156,7 +156,7 @@ public class Register2Controller implements Initializable {
         signUpBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand; -fx-background-color: #e74b94;");
     }
     private void exitLoginBtn(MouseEvent event) {
-        signUpBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand;");
+        signUpBtn.setStyle("-fx-padding: 10px; -fx-background-color: #e85a9d; -fx-cursor: hand;");
     }
 
     // Get all image from resource/avatar

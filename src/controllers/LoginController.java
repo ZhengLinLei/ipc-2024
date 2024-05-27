@@ -189,7 +189,7 @@ public class LoginController implements Initializable {
         signInBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand; -fx-background-color: #e74b94;");
     }
     private void exitLoginBtn(MouseEvent event) {
-        signInBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand;");
+        signInBtn.setStyle("-fx-padding: 10px; -fx-background-color: #e85a9d; -fx-cursor: hand;");
     }
     
     private void windowKeyEnter(KeyEvent event) throws IOException {

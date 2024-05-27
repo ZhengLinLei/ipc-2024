@@ -164,7 +164,7 @@ public class RegisterController implements Initializable {
         // Tienen que tener más de 6 caracteres
         if (p.length() < 6) {
             errorLabel.setText("La contraseña debe tener más de 6 caracteres");
-            signInPassIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
+            signUpPassIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
             signUpRepassIn.setStyle("-fx-border-color: red; -fx-cursor: hand;");
             return;
         }
@@ -200,7 +200,7 @@ public class RegisterController implements Initializable {
         signUpBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand; -fx-background-color: #e74b94;");
     }
     private void exitLoginBtn(MouseEvent event) {
-        signUpBtn.setStyle("-fx-padding: 10px; -fx-cursor: hand;");
+        signUpBtn.setStyle("-fx-padding: 10px; -fx-background-color: #e85a9d; -fx-cursor: hand;");
     }
     private void windowKeyEnter(KeyEvent event) throws IOException {
         if(event.getCode() == KeyCode.ENTER){
